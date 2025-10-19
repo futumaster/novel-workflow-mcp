@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "novel-workflow": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@pimzino/novel-workflow-mcp@latest",
+        "/path/to/your/novel-project",
+        "--AutoStartDashboard"
+      ]
+    }
+  }
+}
+
