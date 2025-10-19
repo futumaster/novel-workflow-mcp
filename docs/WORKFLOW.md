@@ -1,491 +1,502 @@
-# Workflow Process Guide
+# 小说创作工作流程指南
 
-This guide explains the complete spec-driven development workflow and best practices for using Spec Workflow MCP.
+本指南说明完整的AI辅助小说创作工作流程和最佳实践。
 
-## Overview
+## 概览
 
-The spec-driven workflow follows a structured approach:
-
-```
-Steering → Specifications → Implementation → Verification
-```
-
-Each phase builds on the previous, ensuring systematic and well-documented development.
-
-## Phase 1: Project Setup with Steering Documents
-
-### Why Steering Documents?
-
-Steering documents provide high-level guidance that keeps your project aligned and consistent. They act as a north star for all development decisions.
-
-### Creating Steering Documents
+小说创作工作流遵循结构化方法：
 
 ```
-"Create steering documents for my project"
+指导文档 → 简要大纲 → 详细大纲 → 场景清单 → 正文创作
 ```
 
-This generates three key documents:
+每个阶段在前一阶段的基础上构建，确保系统化和有据可查的创作过程。
 
-#### 1. Product Steering (`steering/product.md`)
-- Product vision and mission
-- Target users and personas
-- Core features and priorities
-- Success metrics and KPIs
-- Non-goals and constraints
+## 阶段 0: 项目设置与指导文档
 
-#### 2. Technical Steering (`steering/tech.md`)
-- Architecture decisions
-- Technology stack choices
-- Performance requirements
-- Security considerations
-- Scalability approach
+### 为什么需要指导文档？
 
-#### 3. Structure Steering (`steering/structure.md`)
-- Project organization
-- File and folder conventions
-- Naming standards
-- Module boundaries
-- Documentation structure
+指导文档提供高层次指导，保持你的故事一致和对齐。它们作为所有创作决策的北极星。
 
-### Best Practices for Steering
-
-1. **Create early** - Set up steering before any specs
-2. **Keep updated** - Revise as project evolves
-3. **Reference often** - Use for decision making
-4. **Share widely** - Ensure team alignment
-
-## Phase 2: Specification Creation
-
-### The Three-Document System
-
-Each spec consists of three sequential documents:
+### 创建指导文档
 
 ```
-Requirements → Design → Tasks
+"为我的小说创建指导文档"
 ```
 
-### Requirements Document
+这会生成三个关键文档：
 
-**Purpose**: Define WHAT needs to be built
+#### 1. 故事概念 (`steering/story-concept.md`)
+- 一句话故事概括
+- 五句话梗概（三幕式结构）
+- 故事类型和主题
+- 两次两难抉择设计
+- 道德前提
+- 核心冲突
 
-**Contents**:
-- Feature overview
-- User stories
-- Functional requirements
-- Non-functional requirements
-- Acceptance criteria
-- Constraints and assumptions
+#### 2. 世界观设定 (`steering/world-building.md`)
+- 世界概述和时代背景
+- 地理环境和重要地点
+- 社会结构和权力体系
+- 力量体系（如适用）
+- 特殊设定和规则
+- 文化风俗
 
-**Example Creation**:
+#### 3. 人物档案 (`steering/character-profiles.md`)
+- 主角完整档案
+- 重要配角设定
+- 对手角色设定
+- 人物关系图谱
+- 人物成长弧线
+
+### 指导文档最佳实践
+
+1. **早期创建** - 在创作大纲前设置指导文档
+2. **保持更新** - 随故事发展修订
+3. **经常参考** - 用于创作决策
+4. **确保一致** - 维护设定一致性
+
+## 阶段 1: 简要大纲
+
+### 三文档系统
+
+每个故事包含三个递进文档：
+
 ```
-"Create requirements for a user notification system that supports:
-- Email notifications
-- In-app notifications
-- Push notifications
-- User preferences
-- Notification history"
-```
-
-### Design Document
-
-**Purpose**: Define HOW it will be built
-
-**Contents**:
-- Technical architecture
-- Component design
-- Data models
-- API specifications
-- Integration points
-- Implementation approach
-
-**Automatic Generation**: Created after requirements approval
-
-### Tasks Document
-
-**Purpose**: Define the STEPS to build it
-
-**Contents**:
-- Hierarchical task breakdown
-- Dependencies
-- Effort estimates
-- Implementation order
-- Testing requirements
-
-**Structure Example**:
-```
-1.0 Database Setup
-  1.1 Create notification tables
-  1.2 Set up indexes
-  1.3 Create migration scripts
-
-2.0 Backend Implementation
-  2.1 Create notification service
-    2.1.1 Email handler
-    2.1.2 Push handler
-  2.2 Create API endpoints
-  2.3 Add authentication
-
-3.0 Frontend Implementation
-  3.1 Create notification components
-  3.2 Integrate with API
-  3.3 Add preference UI
+简要大纲 → 详细大纲 → 场景清单
 ```
 
-## Phase 3: Review and Approval
+### 简要大纲文档
 
-### Approval Workflow
+**目的**：定义故事核心
 
-1. **Document Creation** - AI generates document
-2. **Review Request** - Approval requested automatically
-3. **User Review** - Review in dashboard/extension
-4. **Decision** - Approve, request changes, or reject
-5. **Revision** (if needed) - AI updates based on feedback
-6. **Final Approval** - Document locked for implementation
+**内容**：
+- 一句话概括（类型+主角+任务，≤25词）
+- 五句话梗概（三幕式结构）
+- 核心冲突（外部+内部）
+- 主要人物简介
+- 故事结构框架
+- 核心主题
+- 独特卖点
 
-### Making Approval Decisions
-
-#### When to Approve
-- Requirements are complete and clear
-- Design solves the stated problem
-- Tasks are logical and comprehensive
-- No major concerns or gaps
-
-#### When to Request Changes
-- Missing important details
-- Unclear specifications
-- Better approach available
-- Needs alignment with standards
-
-#### When to Reject
-- Fundamental misunderstanding
-- Wrong approach entirely
-- Requires complete rethink
-
-### Providing Effective Feedback
-
-Good feedback:
+**示例创建**：
 ```
-"The authentication flow should use JWT tokens instead of sessions.
-Add rate limiting to the API endpoints.
-Include error handling for network failures."
+"创建一个玄幻小说的简要大纲，关于：
+- 一位失忆的剑客
+- 寻找失落神器恢复记忆
+- 发现自己是毁灭世界的关键
+- 在拯救和毁灭间做出选择"
 ```
 
-Poor feedback:
+### 详细大纲文档
+
+**目的**：定义HOW - 如何讲述这个故事
+
+**内容**：
+- 四页详细大纲（每页约1500字）
+- 第一幕：开端（约25%）
+- 第二幕前半：上升行动（约25%）
+- 第二幕后半：危机深化（约25%，含两次两难抉择）
+- 第三幕：高潮与结局（约25%）
+- 完整人物弧线
+- 主题线索贯穿
+- 伏笔与呼应
+- 关键对话与金句
+
+**自动生成**：简要大纲批准后创建
+
+### 场景清单文档
+
+**目的**：定义STEPS - 逐场景创作步骤
+
+**内容**：
+- 分章节的场景列表
+- 每个场景的编号（如1.1, 2.3）
+- 场景类型（主动/被动）
+- 场景三要素
+- 视点人物
+- 关键内容要点
+- 对应大纲部分
+
+**结构示例**：
 ```
-"This doesn't look right. Fix it."
+第1章 命运的转折
+
+- [ ] 1.1 日常世界
+  - 类型：主动场景
+  - 视点：主角
+  - 目标：完成日常任务
+  - 冲突：遇到异常事件
+  - 挫折：卷入危险
+  - _OutlineBrief: 对应第一句
+  - _OutlineDetailed: 第一幕·常态世界
+  - _Prompt: Role: 小说家，擅长开篇场景 | Task: ...
+
+- [ ] 1.2 内心抉择
+  - 类型：被动场景
+  - 视点：主角
+  - 反应：对事件的震惊和恐惧
+  - 困境：逃避还是面对
+  - 决定：选择踏上旅程
+  - _OutlineBrief: 对应第一、二句
+  - _OutlineDetailed: 第一幕·接受冒险
+  - _Prompt: Role: 小说家，擅长心理描写 | Task: ...
 ```
 
-## Phase 4: Implementation
+## 阶段 2: 审批与修订
 
-### Task Execution Strategy
+### 审批工作流
 
-#### Sequential Implementation
-Best for dependent tasks:
+1. **文档创建** - AI生成文档
+2. **审批请求** - 自动请求审批
+3. **用户审阅** - 在仪表板/扩展中审阅
+4. **决策** - 批准、请求修改或拒绝
+5. **修订**（如需要） - AI根据反馈更新
+6. **最终批准** - 文档锁定，开始下一阶段
+
+### 做出审批决策
+
+#### 何时批准
+- 大纲完整且清晰
+- 设定解决了核心问题
+- 场景逻辑且全面
+- 没有主要顾虑或空白
+
+#### 何时请求修改
+- 缺少重要细节
+- 规格不清楚
+- 有更好的方法
+- 需要与标准对齐
+
+#### 何时拒绝
+- 根本性误解
+- 完全错误的方法
+- 需要完全重新思考
+
+### 提供有效反馈
+
+好的反馈：
 ```
-"Implement task 1.1 from user-auth spec"
-"Now implement task 1.2"
-"Continue with task 1.3"
+"主角的动机不够强烈，需要加强家族仇恨的背景。
+第二幕的节奏太慢，压缩前半部分，加快进入第一次两难抉择。
+对手的行为逻辑不够充分，补充其童年创伤的描写。"
 ```
 
-#### Parallel Implementation
-For independent tasks:
+差的反馈：
 ```
-"Implement all UI tasks from the dashboard spec while I work on the backend"
-```
-
-#### Section-Based Implementation
-For logical groupings:
-```
-"Implement all database tasks from the payment spec"
+"这看起来不对。重写吧。"
 ```
 
-### Progress Tracking
+## 阶段 3: 场景创作
 
-Monitor implementation through:
-- Dashboard task view
-- Progress bars
-- Status indicators
-- Completion percentages
+### 场景写作策略
 
-### Handling Blockers
+#### 按顺序创作
+最适合情节紧密的故事：
+```
+"撰写 my-novel 故事的场景 1.1"
+"现在撰写场景 1.2"
+"继续场景 2.1"
+```
 
-When blocked:
-1. Document the blocker
-2. Create a sub-task for resolution
-3. Move to parallel tasks if possible
-4. Update task status to "blocked"
+#### 分章节创作
+对于逻辑分组：
+```
+"撰写 fantasy-adventure 故事第1章的所有场景"
+```
 
-## Phase 5: Verification
+#### 跳跃创作
+对于灵感驱动：
+```
+"先写高潮场景 15.2（最终对决）"
+"然后写开篇场景 1.1"
+```
 
-### Testing Strategy
+### 进度跟踪
 
-After implementation:
+通过以下方式监控创作：
+- 仪表板场景视图
+- 进度条
+- 状态指示器
+- 完成百分比
 
-1. **Unit Testing**
+### 处理阻塞
+
+当遇到创作瓶颈：
+1. 记录阻塞点
+2. 回顾详细大纲寻找灵感
+3. 如可能移至其他场景
+4. 更新场景状态为"blocked"
+
+## 阶段 4: 质量保证
+
+### 测试策略
+
+创作完成后：
+
+1. **一致性检查**
    ```
-   "Create unit tests for the notification service"
+   "检查人物行为是否符合人物档案"
    ```
 
-2. **Integration Testing**
+2. **情节连贯性**
    ```
-   "Create integration tests for the API endpoints"
-   ```
-
-3. **End-to-End Testing**
-   ```
-   "Create E2E tests for the complete notification flow"
+   "检查所有伏笔是否回收"
    ```
 
-### Documentation Updates
+3. **主题一致性**
+   ```
+   "检查主题是否贯穿始终"
+   ```
 
-Keep documentation current:
+### 文档更新
+
+保持文档最新：
 ```
-"Update the API documentation for the new endpoints"
-"Add usage examples to the README"
+"更新人物档案反映新的成长"
+"补充世界观设定中新增的设定"
 ```
 
-## File Structure and Organization
+## 文件结构与组织
 
-### Standard Project Structure
+### 标准项目结构
 
 ```
-your-project/
-├── .spec-workflow/
+your-novel-project/
+├── .novel-workflow/
 │   ├── steering/
-│   │   ├── product.md
-│   │   ├── tech.md
-│   │   └── structure.md
-│   ├── specs/
-│   │   ├── user-auth/
-│   │   │   ├── requirements.md
-│   │   │   ├── design.md
-│   │   │   └── tasks.md
-│   │   └── payment-gateway/
-│   │       ├── requirements.md
-│   │       ├── design.md
-│   │       └── tasks.md
+│   │   ├── story-concept.md
+│   │   ├── world-building.md
+│   │   └── character-profiles.md
+│   ├── stories/
+│   │   ├── main-story/
+│   │   │   ├── outline-brief.md
+│   │   │   ├── outline-detailed.md
+│   │   │   └── scenes.md
+│   │   └── side-quest-1/
+│   │       ├── outline-brief.md
+│   │       ├── outline-detailed.md
+│   │       └── scenes.md
 │   └── approval/
-│       └── [approval tracking files]
-├── src/
-│   └── [your implementation]
-└── tests/
-    └── [your tests]
+│       └── [审批跟踪文件]
+├── manuscript/
+│   └── [你的正文内容]
+└── notes/
+    └── [创作笔记]
 ```
 
-### Naming Conventions
+### 命名约定
 
-**Spec Names**:
-- Use kebab-case: `user-authentication`
-- Be descriptive: `payment-processing` not `payments`
-- Avoid versions: `user-profile` not `user-profile-v2`
+**故事名称**：
+- 使用kebab-case：`fantasy-adventure`
+- 描述性：`urban-romance-story` 而非 `story1`
+- 避免版本号：`main-story` 而非 `main-story-v2`
 
-**Document Names**:
-- Always: `requirements.md`, `design.md`, `tasks.md`
-- Consistent across all specs
+**文档名称**：
+- 始终：`outline-brief.md`、`outline-detailed.md`、`scenes.md`
+- 所有故事保持一致
 
-## Advanced Workflows
+## 高级工作流程
 
-### Feature Iterations
+### 系列小说
 
-For evolving features:
+对于系列作品：
 
-1. Create initial spec
-2. Implement MVP
-3. Create enhancement spec
-4. Reference original spec
-5. Build on existing work
+1. 创建系列级指导文档
+2. 创建第一部的故事文档
+3. 完成第一部
+4. 创建第二部的故事文档（引用第一部）
+5. 在现有世界观基础上构建
 
-Example:
+示例：
 ```
-"Create an enhancement spec for user-auth that adds:
-- Social login (Google, Facebook)
-- Biometric authentication
-- Session management improvements"
-```
-
-### Refactoring Workflow
-
-1. **Document Current State**
-   ```
-   "Create a spec documenting the current authentication system"
-   ```
-
-2. **Design Improvements**
-   ```
-   "Design refactoring to improve authentication performance"
-   ```
-
-3. **Plan Migration**
-   ```
-   "Create migration tasks for the refactoring"
-   ```
-
-4. **Implement Gradually**
-   ```
-   "Implement refactoring tasks with backward compatibility"
-   ```
-
-### Bug Resolution Workflow
-
-1. **Bug Report**
-   ```
-   "Create bug report for login timeout issue"
-   ```
-
-2. **Investigation**
-   ```
-   "Investigate root cause of bug #45"
-   ```
-
-3. **Solution Design**
-   ```
-   "Design fix for the timeout issue"
-   ```
-
-4. **Implementation**
-   ```
-   "Implement the bug fix"
-   ```
-
-5. **Verification**
-   ```
-   "Create regression tests for bug #45"
-   ```
-
-## Best Practices
-
-### 1. Maintain Spec Granularity
-
-**Good**: One spec per feature
-- `user-authentication`
-- `payment-processing`
-- `notification-system`
-
-**Poor**: Overly broad specs
-- `backend-system`
-- `all-features`
-
-### 2. Sequential Document Creation
-
-Always follow the order:
-1. Requirements (what)
-2. Design (how)
-3. Tasks (steps)
-
-Never skip ahead.
-
-### 3. Complete Approval Before Implementation
-
-- ✅ Approve requirements → Create design
-- ✅ Approve design → Create tasks
-- ✅ Review tasks → Start implementation
-- ❌ Skip approval → Implementation issues
-
-### 4. Keep Specs Updated
-
-When requirements change:
-```
-"Update the requirements for user-auth to include SSO support"
+"创建'魔法学院系列'第二部的大纲，
+延续第一部的人物成长，
+新的反派和更深的秘密。"
 ```
 
-### 5. Use Consistent Terminology
+### 重写工作流程
 
-Maintain consistency across:
-- Spec names
-- Component names
-- API terminology
-- Database naming
+1. **记录当前状态**
+   ```
+   "记录当前第三章的情节"
+   ```
 
-### 6. Archive Completed Specs
+2. **设计改进**
+   ```
+   "重新设计第三章，加强主角动机"
+   ```
 
-Keep workspace clean:
+3. **规划修改**
+   ```
+   "创建第三章重写的场景清单"
+   ```
+
+4. **逐步实施**
+   ```
+   "重写第三章，保持与后续章节的衔接"
+   ```
+
+### Bug修复工作流程
+
+1. **Bug报告**
+   ```
+   "创建bug报告：第5章人物性格前后矛盾"
+   ```
+
+2. **调查**
+   ```
+   "调查第5章人物问题的根本原因"
+   ```
+
+3. **解决方案设计**
+   ```
+   "设计修复方案"
+   ```
+
+4. **实施**
+   ```
+   "实施修复"
+   ```
+
+5. **验证**
+   ```
+   "检查修复后的一致性"
+   ```
+
+## 最佳实践
+
+### 1. 维护故事粒度
+
+**好的**：每个故事一个大纲
+- `main-story`
+- `side-quest-detective`
+- `flashback-arc`
+
+**差的**：过于宽泛的大纲
+- `entire-novel`
+- `all-chapters`
+
+### 2. 顺序文档创建
+
+始终遵循顺序：
+1. 简要大纲（what）
+2. 详细大纲（how）
+3. 场景清单（steps）
+
+绝不跳过。
+
+### 3. 实施前完整审批
+
+- ✅ 批准简要大纲 → 创建详细大纲
+- ✅ 批准详细大纲 → 创建场景清单
+- ✅ 审阅场景清单 → 开始创作
+- ❌ 跳过审批 → 创作问题
+
+### 4. 保持大纲更新
+
+当情节变化时：
 ```
-"Archive the completed user-auth spec"
+"更新 main-story 的详细大纲以包含新的支线"
 ```
 
-## Common Patterns
+### 5. 使用一致术语
 
-### MVP to Full Feature
+保持一致性：
+- 故事名称
+- 人物名称
+- 地点名称
+- 设定术语
 
-1. Start with MVP spec
-2. Implement core functionality
-3. Create enhancement specs
-4. Build incrementally
-5. Maintain backward compatibility
+### 6. 归档完成的故事
 
-### Microservices Development
-
-1. Create service steering document
-2. Define service boundaries
-3. Create spec per service
-4. Define integration points
-5. Implement services independently
-
-### API-First Development
-
-1. Create API spec first
-2. Design contracts
-3. Generate documentation
-4. Implement endpoints
-5. Create client SDKs
-
-## Troubleshooting Workflow Issues
-
-### Specs Getting Too Large
-
-**Solution**: Break into smaller specs
+保持工作区整洁：
 ```
-"Split the e-commerce spec into:
-- product-catalog
-- shopping-cart
-- checkout-process
-- order-management"
+"归档已完成的 side-quest-1 故事"
 ```
 
-### Unclear Requirements
+## 常见模式
 
-**Solution**: Request clarification
+### MVP到完整作品
+
+1. 从MVP大纲开始
+2. 创作核心情节
+3. 创建补充大纲
+4. 逐步构建
+5. 维护一致性
+
+### 多线叙事开发
+
+1. 创建主线指导文档
+2. 定义叙事边界
+3. 每条线创建大纲
+4. 定义交叉点
+5. 独立创作各线
+
+### 场景优先开发
+
+1. 先创建场景清单
+2. 设计场景结构
+3. 生成详细描述
+4. 创作场景
+5. 整合完整章节
+
+## 工作流程问题排查
+
+### 大纲变得太大
+
+**解决方案**：拆分为更小的故事
 ```
-"The requirements need more detail on:
-- User roles and permissions
-- Error handling scenarios
-- Performance requirements"
+"将长篇小说大纲拆分为：
+- 第一卷：起源
+- 第二卷：成长
+- 第三卷：对决"
 ```
 
-### Design Doesn't Match Requirements
+### 不清楚的设定
 
-**Solution**: Request revision
+**解决方案**：请求澄清
 ```
-"The design doesn't address the multi-tenancy requirement.
-Please revise to include tenant isolation."
+"世界观设定需要更多细节：
+- 魔法系统的具体规则
+- 社会等级的详细划分
+- 历史事件的时间线"
 ```
 
-## Integration with Development Process
+### 大纲与设定不匹配
 
-### Git Workflow
+**解决方案**：请求修订
+```
+"详细大纲没有体现世界观中的力量体系。
+请修订以包含修炼等级的展现。"
+```
 
-1. Create feature branch per spec
-2. Commit after each task completion
-3. Reference spec in commit messages
-4. PR when spec is complete
+## 与创作流程集成
 
-### CI/CD Integration
+### Git工作流程
 
-- Run tests for completed tasks
-- Validate against requirements
-- Deploy completed features
-- Monitor against success metrics
+1. 每个故事创建feature分支
+2. 每个场景完成后提交
+3. 在提交消息中引用故事
+4. 故事完成时PR
 
-### Team Collaboration
+### 备份策略
 
-- Share dashboard URL
-- Assign specs to team members
-- Review each other's specs
-- Coordinate through approvals
+- 定期备份.novel-workflow目录
+- 版本控制所有文档
+- 导出重要里程碑
+- 监控进度指标
 
-## Related Documentation
+### 团队协作
 
-- [User Guide](USER-GUIDE.md) - General usage instructions
-- [Prompting Guide](PROMPTING-GUIDE.md) - Example prompts and patterns
-- [Tools Reference](TOOLS-REFERENCE.md) - Complete tool documentation
-- [Interfaces Guide](INTERFACES.md) - Dashboard and extension details
+- 分享仪表板URL
+- 将故事分配给团队成员
+- 互相审阅大纲
+- 通过审批协调
+
+## 相关文档
+
+- [用户指南](USER-GUIDE.md) - 一般使用说明
+- [提示词指南](PROMPTING-GUIDE.md) - 示例提示词和模式
+- [工具参考](TOOLS-REFERENCE.md) - 完整工具文档
+- [界面指南](INTERFACES.md) - 仪表板和扩展详情

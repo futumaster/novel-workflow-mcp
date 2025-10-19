@@ -1,184 +1,94 @@
-# Spec Workflow MCP
+# Novel Workflow MCP
 
-[![npm version](https://img.shields.io/npm/v/@pimzino/spec-workflow-mcp)](https://www.npmjs.com/package/@pimzino/spec-workflow-mcp)
-[![VSCode Extension](https://badgen.net/vs-marketplace/v/Pimzino.spec-workflow-mcp)](https://marketplace.visualstudio.com/items?itemName=Pimzino.spec-workflow-mcp)
+[![npm version](https://img.shields.io/npm/v/@pimzino/novel-workflow-mcp)](https://www.npmjs.com/package/@pimzino/novel-workflow-mcp)
 
-A Model Context Protocol (MCP) server for structured spec-driven development with real-time dashboard and VSCode extension.
+一个基于 Model Context Protocol (MCP) 的AI辅助小说创作工作流服务器，配备实时仪表板和VSCode扩展。
 
-## ☕ Support This Project
+## ✨ 核心特性
 
-<a href="https://buymeacoffee.com/Pimzino" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+- **结构化小说创作工作流** - 按照专业步骤创作（故事概念 → 大纲 → 场景 → 正文）
+- **实时Web仪表板** - 监控创作进度、大纲和场景状态
+- **VSCode扩展** - 在VSCode侧边栏集成仪表板
+- **审批工作流** - 完整的大纲审批流程和修订管理
+- **场景进度跟踪** - 可视化进度条和详细状态
+- **多语言支持** - 支持11种语言
 
-## 📺 Showcase
-
-### 🔄 Approval System in Action
-<a href="https://www.youtube.com/watch?v=C-uEa3mfxd0" target="_blank">
-  <img src="https://img.youtube.com/vi/C-uEa3mfxd0/maxresdefault.jpg" alt="Approval System Demo" width="600">
-</a>
-
-*See how the approval system works: create documents, request approval through the dashboard, provide feedback, and track revisions.*
-
-### 📊 Dashboard & Spec Management
-<a href="https://www.youtube.com/watch?v=g9qfvjLUWf8" target="_blank">
-  <img src="https://img.youtube.com/vi/g9qfvjLUWf8/maxresdefault.jpg" alt="Dashboard Demo" width="600">
-</a>
-
-*Explore the real-time dashboard: view specs, track progress, navigate documents, and monitor your development workflow.*
-
-## ✨ Key Features
-
-- **Structured Development Workflow** - Sequential spec creation (Requirements → Design → Tasks)
-- **Real-Time Web Dashboard** - Monitor specs, tasks, and progress with live updates
-- **VSCode Extension** - Integrated sidebar dashboard for VSCode users
-- **Approval Workflow** - Complete approval process with revisions
-- **Task Progress Tracking** - Visual progress bars and detailed status
-- **Multi-Language Support** - Available in 11 languages
-
-## 🌍 Supported Languages
+## 🌍 支持的语言
 
 🇺🇸 English • 🇯🇵 日本語 • 🇨🇳 中文 • 🇪🇸 Español • 🇧🇷 Português • 🇩🇪 Deutsch • 🇫🇷 Français • 🇷🇺 Русский • 🇮🇹 Italiano • 🇰🇷 한국어 • 🇸🇦 العربية
 
-## 🚀 Quick Start
+## 🚀 快速开始
 
-### Step 1: Add to your AI tool
+### 步骤 1: 添加到你的AI工具
 
-Add to your MCP configuration (see client-specific setup below):
+添加到你的MCP配置（详见下方客户端配置）：
 
 ```json
 {
   "mcpServers": {
-    "spec-workflow": {
+    "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
+      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
     }
   }
 }
 ```
 
-With auto-started dashboard:
+自动启动仪表板：
 ```json
 {
   "mcpServers": {
-    "spec-workflow": {
+    "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project", "--AutoStartDashboard"]
+      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project", "--AutoStartDashboard"]
     }
   }
 }
 ```
 
-### Step 2: Choose your interface
+### 步骤 2: 选择你的界面
 
-**Option A: Web Dashboard** (Required for CLI users)
+**选项 A: Web 仪表板**（CLI用户必选）
 ```bash
-npx -y @pimzino/spec-workflow-mcp@latest /path/to/your/project --dashboard
+npx -y @pimzino/novel-workflow-mcp@latest /path/to/your/novel-project --dashboard
 ```
 
-**Option B: VSCode Extension** (Recommended for VSCode users)
+**选项 B: VSCode 扩展**（推荐VSCode用户）
 
-Install [Spec Workflow MCP Extension](https://marketplace.visualstudio.com/items?itemName=Pimzino.spec-workflow-mcp) from the VSCode marketplace.
+从VSCode市场安装 Novel Workflow MCP Extension
 
-## 📝 How to Use
+## 📝 如何使用
 
-Simply mention spec-workflow in your conversation:
+在对话中直接提及novel-workflow：
 
-- **"Create a spec for user authentication"** - Creates complete spec workflow
-- **"List my specs"** - Shows all specs and their status
-- **"Execute task 1.2 in spec user-auth"** - Runs a specific task
+- **"为我的玄幻小说创建故事概念"** - 创建完整的故事框架
+- **"列出我的所有作品"** - 显示所有作品及其状态
+- **"撰写第1章第2场景"** - 执行特定场景的写作
 
-[See more examples →](docs/PROMPTING-GUIDE.md)
-
-## 🔧 MCP Client Setup
-
-<details>
-<summary><strong>Augment Code</strong></summary>
-
-Configure in your Augment settings:
-```json
-{
-  "mcpServers": {
-    "spec-workflow": {
-      "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
-    }
-  }
-}
-```
-</details>
-
-<details>
-<summary><strong>Claude Code CLI</strong></summary>
-
-Add to your MCP configuration:
-```bash
-claude mcp add spec-workflow npx @pimzino/spec-workflow-mcp@latest -- /path/to/your/project
-```
-
-**Important Notes:**
-- The `-y` flag bypasses npm prompts for smoother installation
-- The `--` separator ensures the path is passed to the spec-workflow script, not to npx
-- Replace `/path/to/your/project` with your actual project directory path
-
-**Alternative for Windows (if the above doesn't work):**
-```bash
-claude mcp add spec-workflow cmd.exe /c "npx @pimzino/spec-workflow-mcp@latest /path/to/your/project"
-```
-</details>
+## 🔧 MCP 客户端配置
 
 <details>
 <summary><strong>Claude Desktop</strong></summary>
 
-Add to `claude_desktop_config.json`:
+添加到 `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "spec-workflow": {
+    "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
+      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
     }
   }
 }
 ```
 
-Or with auto-started dashboard:
+或自动启动仪表板：
 ```json
 {
   "mcpServers": {
-    "spec-workflow": {
+    "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project", "--AutoStartDashboard"]
-    }
-  }
-}
-```
-</details>
-
-<details>
-<summary><strong>Cline/Claude Dev</strong></summary>
-
-Add to your MCP server configuration:
-```json
-{
-  "mcpServers": {
-    "spec-workflow": {
-      "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
-    }
-  }
-}
-```
-</details>
-
-<details>
-<summary><strong>Continue IDE Extension</strong></summary>
-
-Add to your Continue configuration:
-```json
-{
-  "mcpServers": {
-    "spec-workflow": {
-      "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
+      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project", "--AutoStartDashboard"]
     }
   }
 }
@@ -188,87 +98,139 @@ Add to your Continue configuration:
 <details>
 <summary><strong>Cursor IDE</strong></summary>
 
-Add to your Cursor settings (`settings.json`):
+添加到Cursor设置 (`settings.json`):
 ```json
 {
   "mcpServers": {
-    "spec-workflow": {
+    "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"]
+      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
     }
   }
 }
 ```
 </details>
 
-<details>
-<summary><strong>OpenCode</strong></summary>
+## 📚 小说创作工作流
 
-Add to your `opencode.json` configuration file:
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "spec-workflow": {
-      "type": "local",
-      "command": ["npx", "-y", "@pimzino/spec-workflow-mcp@latest", "/path/to/your/project"],
-      "enabled": true
-    }
-  }
-}
+### 阶段 1: 故事基础设定
+
+创建三个核心指导文档：
+
+#### 1. 故事概念 (`steering/story-concept.md`)
+- 一句话故事概括
+- 一段式故事梗概（五句话，三幕式结构）
+- 故事类型和主题
+- 两难性时刻设计
+- 道德前提
+
+#### 2. 世界观设定 (`steering/world-building.md`)
+- 世界观背景
+- 时代设定
+- 地理环境
+- 社会结构
+- 魔法/科技体系（如适用）
+
+#### 3. 人物设定 (`steering/character-profiles.md`)
+- 主要人物档案
+- 人物背景故事
+- 人物目标与动机
+- 人物关系图谱
+- 人物成长弧线
+
+### 阶段 2: 大纲创作
+
+每个作品包含三个递进文档：
+
+#### 简要大纲 (`outline-brief.md`)
+- 一句话概括
+- 一段式大纲（五句话）
+- 核心冲突
+- 主要人物介绍
+
+#### 详细大纲 (`outline-detailed.md`)
+- 四页详细大纲（每页约1500字）
+- 完整三幕式结构
+- 详细人物线
+- 关键情节点
+
+#### 场景清单 (`scenes.md`)
+- 场景列表和编号
+- 每个场景的核心冲突
+- 场景类型（主动/被动）
+- 场景要素（目标/冲突/挫折 或 反应/困境/决定）
+
+### 阶段 3: 审批与修订
+
+1. **文档创建** - AI生成文档
+2. **审批请求** - 自动请求审批
+3. **用户审阅** - 在仪表板/扩展中审阅
+4. **决策** - 批准、请求修改或拒绝
+5. **修订**（如需要） - AI根据反馈更新
+6. **最终批准** - 文档锁定，开始创作
+
+### 阶段 4: 场景创作
+
+按场景清单逐个创作：
+- 跟踪创作进度
+- 标记完成的场景
+- 监控整体进展
+
+## 📁 项目结构
+
 ```
-</details>
-
-## 📚 Documentation
-
-- [Configuration Guide](docs/CONFIGURATION.md) - Command-line options, config files
-- [User Guide](docs/USER-GUIDE.md) - Comprehensive usage examples
-- [Workflow Process](docs/WORKFLOW.md) - Development workflow and best practices
-- [Interfaces Guide](docs/INTERFACES.md) - Dashboard and VSCode extension details
-- [Prompting Guide](docs/PROMPTING-GUIDE.md) - Advanced prompting examples
-- [Tools Reference](docs/TOOLS-REFERENCE.md) - Complete tools documentation
-- [Development](docs/DEVELOPMENT.md) - Contributing and development setup
-- [Troubleshooting](docs/TROUBLESHOOTING.md) - Common issues and solutions
-
-## 📁 Project Structure
-
-```
-your-project/
-  .spec-workflow/
+your-novel-project/
+  .novel-workflow/
     approvals/
     archive/
-    specs/
+    stories/
+      my-fantasy-novel/
+        outline-brief.md
+        outline-detailed.md
+        scenes.md
     steering/
+      story-concept.md
+      world-building.md
+      character-profiles.md
     templates/
     user-templates/
     config.example.toml
 ```
 
-## 🛠️ Development
+## 🛠️ 开发
 
 ```bash
-# Install dependencies
+# 安装依赖
 npm install
 
-# Build the project
+# 构建项目
 npm run build
 
-# Run in development mode
+# 开发模式运行
 npm run dev
 ```
 
-[See development guide →](docs/DEVELOPMENT.md)
-
-## 📄 License
+## 📄 许可证
 
 GPL-3.0
 
-## ⭐ Star History
+## 📖 小说创作步骤说明
 
-<a href="https://www.star-history.com/#Pimzino/spec-workflow-mcp&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Pimzino/spec-workflow-mcp&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Pimzino/spec-workflow-mcp&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Pimzino/spec-workflow-mcp&type=Date" />
- </picture>
-</a>
+本工具基于专业小说创作方法论，将AI辅助写作流程化：
+
+1. **研读对标小说** - 提取核心概念
+2. **一句话概括** - 类型+主角+任务
+3. **一段式概括** - 五句话三幕式结构
+4. **人物介绍** - 每个角色的完整档案
+5. **故事大纲** - 从一页扩展到四页
+6. **人物大纲** - 深挖人物背景
+7. **场景生成** - 主动和被动场景列表
+8. **场景清单** - 包含所有必要信息
+9. **正文创作** - 逐场景/逐章节创作
+
+## 🎯 创作原则
+
+- **AI是辅助工具** - 真实情感体验仍需人类创作
+- **结构化创作** - 遵循专业写作步骤
+- **迭代完善** - 通过审批流程持续优化
+- **进度可视化** - 清晰掌握创作进展

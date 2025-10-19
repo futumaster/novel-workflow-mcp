@@ -3,20 +3,20 @@ import { ToolContext } from '../types.js';
 import { PromptDefinition, PromptHandler } from './types.js';
 
 // Import individual prompt definitions
-import { createSpecPrompt } from './create-spec.js';
+import { createStoryPrompt } from './create-spec.js';
 import { createSteeringDocPrompt } from './create-steering-doc.js';
-import { implementTaskPrompt } from './implement-task.js';
-import { specStatusPrompt } from './spec-status.js';
+import { writeScenePrompt } from './write-scene.js';
+import { storyStatusPrompt } from './story-status.js';
 import { injectSpecWorkflowGuidePrompt } from './inject-spec-workflow-guide.js';
 import { injectSteeringGuidePrompt } from './inject-steering-guide.js';
 import { refreshTasksPrompt } from './refresh-tasks.js';
 
 // Registry of all prompts
 const promptDefinitions: PromptDefinition[] = [
-  createSpecPrompt,
+  createStoryPrompt,
   createSteeringDocPrompt,
-  implementTaskPrompt,
-  specStatusPrompt,
+  writeScenePrompt,
+  storyStatusPrompt,
   injectSpecWorkflowGuidePrompt,
   injectSteeringGuidePrompt,
   refreshTasksPrompt

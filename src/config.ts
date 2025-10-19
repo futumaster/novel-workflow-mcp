@@ -144,10 +144,18 @@ export function loadConfigFile(projectDir: string, customConfigPath?: string): C
   // Otherwise, look for default config in project directory
   try {
     const expandedDir = expandTilde(projectDir);
-    const configDir = path.join(expandedDir, '.spec-workflow');
+    const configDir = path.join(expandedDir, '.novel-workflow');
     const configPath = path.join(configDir, 'config.toml');
     
     if (!fs.existsSync(configPath)) {
+      // Try legacy path for backward compatibility
+      const legacyConfigDir = path.join(expandedDir, '.spec-workflow');
+      const legacyConfigPath = path.join(legacyConfigDir, 'config.toml');
+      
+      if (fs.existsSync(legacyConfigPath)) {
+        return loadConfigFromPath(legacyConfigPath);
+      }
+      
       return { 
         config: null, 
         configPath: null 

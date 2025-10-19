@@ -5,16 +5,16 @@ import { ToolContext } from '../types.js';
 const prompt: Prompt = {
   name: 'create-steering-doc',
   title: 'Create Steering Document',
-  description: 'Guide for creating project steering documents (product, tech, structure) directly in the file system. These provide high-level project guidance.',
+  description: 'Guide for creating story steering documents (story-concept, world-building, character-profiles) directly in the file system. These provide high-level story guidance.',
   arguments: [
     {
       name: 'docType',
-      description: 'Type of steering document: product, tech, or structure',
+      description: 'Type of steering document: story-concept, world-building, or character-profiles',
       required: true
     },
     {
       name: 'scope',
-      description: 'Scope of the steering document (e.g., frontend, backend, full-stack)',
+      description: 'Scope of the steering document (e.g., main-story, subplot, series)',
       required: false
     }
   ]
@@ -27,7 +27,7 @@ async function handler(args: Record<string, any>, context: ToolContext): Promise
     throw new Error('docType is a required argument');
   }
 
-  const validDocTypes = ['product', 'tech', 'structure'];
+  const validDocTypes = ['story-concept', 'world-building', 'character-profiles'];
   if (!validDocTypes.includes(docType)) {
     throw new Error(`docType must be one of: ${validDocTypes.join(', ')}`);
   }
@@ -37,7 +37,7 @@ async function handler(args: Record<string, any>, context: ToolContext): Promise
       role: 'user',
       content: {
         type: 'text',
-        text: `Create a ${docType} steering document for the project.
+        text: `Create a ${docType} steering document for the novel project.
 
 **Context:**
 - Project: ${context.projectPath}
@@ -46,26 +46,26 @@ ${scope ? `- Scope: ${scope}` : ''}
 ${context.dashboardUrl ? `- Dashboard: ${context.dashboardUrl}` : ''}
 
 **Instructions:**
-1. First, read the template at: .spec-workflow/templates/${docType}-template.md
-2. Check if steering docs exist at: .spec-workflow/steering/
+1. First, read the template at: .novel-workflow/templates/${docType}-template.md
+2. Check if steering docs exist at: .novel-workflow/steering/
 3. Create comprehensive content following the template structure
-4. Create the document at: .spec-workflow/steering/${docType}.md
+4. Create the document at: .novel-workflow/steering/${docType}.md
 5. After creating, use approvals tool with action:'request' to get user approval
 
 **File Paths:**
-- Template location: .spec-workflow/templates/${docType}-template.md
-- Document destination: .spec-workflow/steering/${docType}.md
+- Template location: .novel-workflow/templates/${docType}-template.md
+- Document destination: .novel-workflow/steering/${docType}.md
 
 **Steering Document Types:**
-- **product**: Defines project vision, goals, and user outcomes
-- **tech**: Documents technology decisions and architecture patterns
-- **structure**: Maps codebase organization and conventions
+- **story-concept**: Defines story core concept, one-liner, five-sentence summary, themes, and two dilemmas
+- **world-building**: Documents world setting, power system, social structure, and unique elements
+- **character-profiles**: Maps all character profiles, backgrounds, arcs, and relationships
 
 **Key Principles:**
-- Be specific and actionable
-- Include examples where helpful
-- Consider both technical and business requirements
-- Provide clear guidance for future development
+- Be vivid and specific with strong imagery
+- Include examples and specific details
+- Consider both plot and character development
+- Provide clear guidance for story writing
 - Templates are automatically updated on server start
 
 Please read the ${docType} template and create a comprehensive steering document at the specified path.`

@@ -1,11 +1,11 @@
 {
-  "name": "@pimzino/spec-workflow-mcp",
-  "version": "1.0.1",
-  "description": "MCP server for spec-driven development workflow with real-time web dashboard",
+  "name": "@pimzino/novel-workflow-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for AI-assisted novel writing workflow with real-time web dashboard",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
-    "spec-workflow-mcp": "dist/index.js"
+    "novel-workflow-mcp": "dist/index.js"
   },
   "files": [
     "dist/**/*",
@@ -29,12 +29,13 @@
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "spec-workflow",
-    "ai-development",
+    "novel-writing",
+    "ai-writing",
+    "creative-writing",
     "claude",
     "cursor",
-    "development-workflow",
-    "project-management"
+    "writing-workflow",
+    "story-creation"
   ],
   "author": "",
   "license": "GPL-3.0",

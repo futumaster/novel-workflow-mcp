@@ -1,12 +1,12 @@
 {
   "documentTitle": "{{projectName}} Dashboard",
-  "projectNameDefault": "Spec Workflow",
-  "projectDescription": "Development workflow dashboard",
+  "projectNameDefault": "Novel Workflow",
+  "projectDescription": "Novel writing workflow dashboard",
   "nav": {
     "statistics": "Statistics",
     "steering": "Steering",
-    "specs": "Specs",
-    "tasks": "Tasks",
+    "specs": "Stories",
+    "tasks": "Scenes",
     "approvals": "Approvals"
   },
   "connectionStatus": {
@@ -30,14 +30,14 @@
   },
   "stats": {
     "specifications": {
-      "title": "Specifications",
-      "label": "Active specs"
+      "title": "Stories",
+      "label": "Active stories"
     },
     "taskProgress": {
-      "title": "Task Progress",
-      "summary_one": "{{count}} task across {{specs}} spec",
-      "summary_other": "{{count}} tasks across {{specs}} specs",
-      "noActiveSpecs": "No active specs"
+      "title": "Scene Progress",
+      "summary_one": "{{count}} scene across {{specs}} story",
+      "summary_other": "{{count}} scenes across {{specs}} stories",
+      "noActiveSpecs": "No active stories"
     },
     "approvals": {
       "title": "Approvals",
@@ -47,7 +47,7 @@
   },
   "comingSoon": {
     "title": "More Features Coming Soon",
-    "description": "We're working on additional analytics and insights for your development workflow. Stay tuned for updates!"
+    "description": "We're working on additional analytics and insights for your novel writing workflow. Stay tuned for updates!"
   },
   "links": {
     "npm": "npm package",
@@ -68,7 +68,7 @@
     }
   },
   "specViewer": {
-    "header": { "title": "Spec Documents" },
+    "header": { "title": "Story Documents" },
     "tooltips": { "viewRendered": "View rendered document", "viewSource": "View source markdown" },
     "empty": { "docNotCreated": "This {{doc}} document hasn't been created yet." }
   },
@@ -96,19 +96,19 @@
   },
   "tasksPage": {
     "header": {
-      "title": "Task Management",
+      "title": "Scene Management",
       "subtitle": {
-        "selected": "Manage and track task completion",
-        "unselected": "Select a specification to view and manage its tasks"
+        "selected": "Manage and track scene completion",
+        "unselected": "Select a story to view and manage its scenes"
       }
     },
-    "taskDetails": "Task Details",
+    "taskDetails": "Scene Details",
     "status": "Status",
-    "noTasksFound": "No tasks found",
-    "showAllTasks": "Show all tasks",
-    "noTasksWithStatus": "No tasks with status \"{{status}}\" found.",
-    "noTasksAvailable": "No tasks available for this specification",
-    "showingTasksWithStatus": "Showing {{count}} tasks with status \"{{status}}\"",
+    "noTasksFound": "No scenes found",
+    "showAllTasks": "Show all scenes",
+    "noTasksWithStatus": "No scenes with status \"{{status}}\" found.",
+    "noTasksAvailable": "No scenes available for this story",
+    "showingTasksWithStatus": "Showing {{count}} scenes with status \"{{status}}\"",
     "filters": {
       "all": "All",
       "pending": "Pending",
@@ -143,29 +143,29 @@
       "clickToChange": "Click to change status"
     },
     "dropdown": {
-      "selectPlaceholder": "Select a spec...",
-      "completedOutOfTotal": "{{completed}} / {{total}} tasks completed",
-      "completedOutOfTotalShort": "{{completed}} / {{total}} tasks"
+      "selectPlaceholder": "Select a story...",
+      "completedOutOfTotal": "{{completed}} / {{total}} scenes completed",
+      "completedOutOfTotalShort": "{{completed}} / {{total}} scenes"
     },
     "search": {
-      "placeholder": "Search specs...",
-      "noSpecsFound": "No specs found",
+      "placeholder": "Search stories...",
+      "noSpecsFound": "No stories found",
       "tryAdjusting": "Try adjusting your search"
     },
-    "loading": "Loading task progress…",
+    "loading": "Loading scene progress…",
     "overallProgress": "Overall Progress",
     "item": {
-      "section": "Section",
-      "task": "Task",
-      "groupBadge": "Task Group"
+      "section": "Chapter",
+      "task": "Scene",
+      "groupBadge": "Scene Group"
     },
     "files": { "label": "Files:" },
-    "implementation": { "label": "Implementation:" },
-    "labels": { "spec": "Spec:" },
+    "implementation": { "label": "Writing:" },
+    "labels": { "spec": "Story:" },
     "noSpecsFound": {
-      "title": "No specs found",
-      "noMatch": "No specs match \"{{query}}\"",
-      "noSpecsAvailable": "No specifications available to manage tasks for."
+      "title": "No stories found",
+      "noMatch": "No stories match \"{{query}}\"",
+      "noSpecsAvailable": "No stories available to manage scenes for."
     },
     "copyFailed": {
       "title": "Copy Failed",
@@ -178,14 +178,14 @@
       "copy": "Copy"
     },
     "notifications": {
-      "statusUpdated": "Task {{taskId}} marked as {{status}}",
-      "updateFailed": "Failed to update task {{taskId}} status",
-      "updateError": "Error updating task {{taskId}} status"
+      "statusUpdated": "Scene {{taskId}} marked as {{status}}",
+      "updateFailed": "Failed to update scene {{taskId}} status",
+      "updateError": "Error updating scene {{taskId}} status"
     },
-    "noTaskData": "No task data available",
+    "noTaskData": "No scene data available",
     "stats": {
       "total": "Total",
-      "totalDesc": "All tasks",
+      "totalDesc": "All scenes",
       "done": "Done",
       "doneDesc": "Completed",
       "left": "Left",
@@ -196,23 +196,23 @@
   },
   "specsPage": {
     "header": {
-      "title": "Specifications",
+      "title": "Stories",
       "subtitle": {
-        "active": "View and manage active requirements, design and task documents",
-        "archived": "View archived specifications"
+        "active": "View and manage active outlines and scene documents",
+        "archived": "View archived stories"
       }
     },
     "modal": {
       "archivedBadge": "Archived",
-      "archivedNotice": "Archived specification (editing enabled)",
-      "closeAria": "Close spec viewer",
+      "archivedNotice": "Archived story (editing enabled)",
+      "closeAria": "Close story viewer",
       "docLabel": "Doc:",
       "docSelectAria": "Select document type"
     },
     "documents": {
-      "requirements": "Requirements",
-      "design": "Design",
-      "tasks": "Tasks"
+      "requirements": "Brief Outline",
+      "design": "Detailed Outline",
+      "tasks": "Scenes"
     },
     "table": {
       "name": "Name",
@@ -222,25 +222,25 @@
     },
     "sort": {
       "defaultOrder": "Default Order",
-      "defaultOrderDesc": "Original spec order",
+      "defaultOrderDesc": "Original story order",
       "name": "Name",
       "nameDesc": "Sort alphabetically by name",
       "progress": "Progress",
-      "progressDesc": "Sort by task completion percentage",
+      "progressDesc": "Sort by scene completion percentage",
       "lastModified": "Last Modified",
       "lastModifiedDesc": "Sort by modification date"
     },
-    "noTasks": "No tasks",
+    "noTasks": "No scenes",
     "search": {
       "placeholder": {
-        "active": "Search active specs...",
-        "archived": "Search archived specs..."
+        "active": "Search active stories...",
+        "archived": "Search archived stories..."
       }
     },
     "empty": {
       "title": "No Documents Available",
-      "description": "This spec doesn't have any documents created yet.",
-      "noResults": "No specs found",
+      "description": "This story doesn't have any documents created yet.",
+      "noResults": "No stories found",
       "noResultsDescription": "Try adjusting your search or filters"
     },
     "tabs": {

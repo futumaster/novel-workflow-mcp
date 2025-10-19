@@ -1,16 +1,23 @@
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { specWorkflowGuideTool, specWorkflowGuideHandler } from './spec-workflow-guide.js';
-import { specStatusTool, specStatusHandler } from './spec-status.js';
+import { novelWorkflowGuideTool, novelWorkflowGuideHandler } from './novel-workflow-guide.js';
+import { storyStatusTool, storyStatusHandler } from './story-status.js';
 import { steeringGuideTool, steeringGuideHandler } from './steering-guide.js';
 import { approvalsTool, approvalsHandler } from './approvals.js';
 import { ToolContext, ToolResponse, MCPToolResponse, toMCPResponse } from '../types.js';
 
+// Legacy support
+import { specWorkflowGuideTool, specWorkflowGuideHandler } from './spec-workflow-guide.js';
+import { specStatusTool, specStatusHandler } from './spec-status.js';
+
 export function registerTools(): Tool[] {
   return [
-    specWorkflowGuideTool,
+    novelWorkflowGuideTool,
     steeringGuideTool,
-    specStatusTool,
-    approvalsTool
+    storyStatusTool,
+    approvalsTool,
+    // Legacy tools for backward compatibility
+    specWorkflowGuideTool,
+    specStatusTool
   ];
 }
 
@@ -20,17 +27,24 @@ export async function handleToolCall(name: string, args: any, context: ToolConte
 
   try {
     switch (name) {
-      case 'spec-workflow-guide':
-        response = await specWorkflowGuideHandler(args, context);
+      case 'novel-workflow-guide':
+        response = await novelWorkflowGuideHandler(args, context);
+        break;
+      case 'story-status':
+        response = await storyStatusHandler(args, context);
         break;
       case 'steering-guide':
         response = await steeringGuideHandler(args, context);
         break;
-      case 'spec-status':
-        response = await specStatusHandler(args, context);
-        break;
       case 'approvals':
         response = await approvalsHandler(args, context);
+        break;
+      // Legacy support
+      case 'spec-workflow-guide':
+        response = await specWorkflowGuideHandler(args, context);
+        break;
+      case 'spec-status':
+        response = await specStatusHandler(args, context);
         break;
       default:
         throw new Error(`Unknown tool: ${name}`);

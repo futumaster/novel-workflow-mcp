@@ -1,713 +1,307 @@
-# Prompting Guide
+# 提示词指南
 
-A comprehensive guide with examples and best practices for interacting with Spec Workflow MCP through AI assistants.
+本指南提供使用Novel Workflow MCP进行小说创作的示例提示词和最佳实践。
 
-## Quick Reference
+## 基础使用
 
-### Essential Commands
+### 开始新故事
 
 ```
-"Create a spec for [feature]"
-"List all my specs"
-"Show status of [spec-name]"
-"Implement task [number] from [spec]"
-"Create steering documents"
-```
-
-## Creating Specifications
-
-### Basic Spec Creation
-
-#### Simple Request
-```
-"Create a spec for user authentication"
-```
-
-The AI will create:
-- Requirements document
-- Design document (after approval)
-- Task breakdown (after design approval)
-
-#### Detailed Request
-```
-"Create a spec called payment-processing with:
-- Credit card payments via Stripe
-- PayPal integration
-- Refund handling
-- Webhook processing for payment events
-- PCI compliance considerations"
-```
-
-#### From Existing Documentation
-```
-"Create a spec from the PRD in @product-requirements.md"
-```
-
-```
-"Build a spec based on the design document at @figma-export.md"
-```
-
-### Advanced Spec Creation
-
-#### With Technical Constraints
-```
-"Create a spec for real-time notifications that:
-- Uses WebSockets for live updates
-- Falls back to polling for older browsers
-- Handles up to 10,000 concurrent connections
-- Maintains message ordering
-- Includes offline queue support"
-```
-
-#### With Acceptance Criteria
-```
-"Create a spec for search functionality with these acceptance criteria:
-- Results appear within 200ms
-- Supports fuzzy matching
-- Includes filters for date, category, and author
-- Shows relevance scoring
-- Handles typos and synonyms"
-```
-
-#### Microservice Specification
-```
-"Create a spec for an inventory microservice that:
-- Exposes REST API
-- Uses PostgreSQL for storage
-- Publishes events to Kafka
-- Implements CQRS pattern
-- Includes health check endpoints"
-```
-
-## Managing Specifications
-
-### Listing and Status
-
-#### Get Overview
-```
-"List all my specs"
-"Show me all specs and their progress"
-"Which specs are waiting for approval?"
-"What specs are currently in progress?"
-```
-
-#### Specific Status
-```
-"Show the status of the user-auth spec"
-"What's the progress on payment-processing?"
-"Show me what's left to do in the notification spec"
-"Which tasks are completed in user-profile?"
-```
-
-#### Filtering
-```
-"Show me specs that are over 50% complete"
-"List specs waiting for my approval"
-"Which specs have no tasks completed yet?"
-"Show blocked or stuck specs"
-```
-
-### Document Management
-
-#### Viewing Documents
-```
-"Show me the requirements for user-auth"
-"Display the design document for payments"
-"What are the tasks for the notification system?"
-"Show all documents for the search spec"
-```
-
-#### Updating Documents
-```
-"Update the user-auth requirements to include 2FA"
-"Revise the payment design to use Stripe Connect"
-"Add a task for security testing to user-profile"
-"Update requirements based on the feedback: [feedback]"
-```
-
-## Implementation Prompts
+"为我的玄幻小说创建指导文档"
 
-### Individual Tasks
+"创建一个都市异能小说的简要大纲：
+主角是一个普通大学生，意外获得读心术能力，
+在揭开城市背后的超能力阴谋中成长"
 
-#### Basic Implementation
-```
-"Implement task 1.2 from user-auth"
-"Complete task 2.1.3 in the payment spec"
-"Work on the next pending task in notifications"
-```
-
-#### With Context
-```
-"Implement task 1.2 from user-auth using TypeScript and Express"
-"Complete the database migration task using Prisma"
-"Implement the API endpoint task following REST conventions"
-```
+"扩展为详细大纲"
 
-### Batch Implementation
+"生成场景清单"
 
-#### By Section
-```
-"Implement all database tasks from user-auth"
-"Complete all frontend tasks in the dashboard spec"
-"Work through all API tasks for payments"
+"开始撰写第1章第1场景"
 ```
 
-#### By Priority
-```
-"Implement all critical tasks first"
-"Complete the MVP tasks from user-profile"
-"Focus on tasks needed for the demo"
-```
+### 查看进度
 
-#### Sequential
 ```
-"Implement tasks 1.1 through 1.5 from user-auth"
-"Complete all subtasks under section 2"
-"Work through the setup tasks in order"
+"显示我的故事列表"
+"查看 urban-power-story 的创作进度"
+"列出所有待写场景"
 ```
-
-### Implementation Strategies
 
-#### Test-Driven
-```
-"For task 1.2, write tests first then implement"
-"Implement task 2.1 with full test coverage"
-"Create unit tests while implementing the service task"
-```
+### 创作场景
 
-#### With Documentation
 ```
-"Implement task 1.3 and document the API"
-"Complete the authentication task with inline comments"
-"Implement and create usage examples for task 2.2"
+"撰写 fantasy-novel 的场景 1.1"
+"写第3章第2场景"
+"继续创作下一个场景"
 ```
-
-## Steering Documents
-
-### Creating Steering
 
-#### Complete Set
-```
-"Create steering documents for my e-commerce project"
-"Set up steering for a SaaS application"
-"Create project guidance for a mobile app"
-```
+## 高级提示词
 
-#### Individual Documents
-```
-"Create a product steering document focusing on user experience"
-"Create technical steering for a microservices architecture"
-"Create structure steering for a monorepo setup"
-```
+### 指导文档创建
 
-#### From Context
-```
-"Create steering documents based on @project-brief.md"
-"Generate steering from our technical decisions in @architecture.md"
 ```
+"创建故事概念文档，包含：
+- 故事类型：现代都市+悬疑推理
+- 一句话概括：一位刑警利用心理侧写破获连环案件，却发现真凶就在身边
+- 两次两难抉择：正义vs亲情，真相vs和平
+- 道德前提：真相永远值得追求"
 
-### Updating Steering
+"创建世界观设定文档：
+- 架空世界，类中世纪欧洲
+- 魔法体系：元素魔法，分为火/水/风/土四系
+- 社会结构：贵族统治，魔法师阶层分明
+- 主要势力：王国、教会、魔法学院"
 
+"创建主要人物档案：
+- 主角：16岁少年，平民出身，意外发现魔法天赋
+- 导师：中年魔法师，隐藏过去秘密
+- 对手：贵族继承人，骄傲但有正义感
+- 配角：青梅竹马，不会魔法但聪明机智"
 ```
-"Update product steering to include B2B features"
-"Revise technical steering to use GraphQL instead of REST"
-"Update structure steering for the new module system"
-```
-
-## Approval Workflows
 
-### Requesting Feedback
-
-#### With Specific Concerns
-```
-"Request approval for user-auth requirements - particularly check the security section"
-"Ask for review of the payment design - focus on the error handling"
-"Request feedback on the task breakdown - is it too granular?"
-```
+### 大纲创建技巧
 
-#### Revision Requests
-```
-"The requirements need more detail on:
-- Error handling scenarios
-- Performance requirements
-- Security considerations
-Please revise and resubmit"
 ```
+"创建简要大纲，强调：
+- 主角成长弧线明显
+- 第一次两难：选择保护朋友还是完成任务（第10章）
+- 第二次两难：选择复仇还是放下（第18章）
+- 主题：成长需要放下仇恨"
 
-### Approval Decisions
-
-#### Approving
+"扩展为详细大纲，注意：
+- 第一幕节奏要快，3章内进入冒险
+- 中点转折要有震撼性揭示
+- 黑暗时刻要深刻，主角失去一切
+- 高潮场景要有情感冲击力"
 ```
-"Approve the user-auth requirements"
-"The design looks good, approve it"
-"Accept the task breakdown as is"
-```
 
-#### Requesting Changes
-```
-"Request changes to the requirements:
-- Add multi-tenant support
-- Include rate limiting
-- Specify data retention policy"
-```
+### 场景清单优化
 
-#### Rejecting
-```
-"Reject the current design - we need to use event-driven architecture instead"
-"Start over with the requirements - the scope is too broad"
 ```
-
-## Bug Workflow
-
-### Reporting Bugs
+"生成场景清单，要求：
+- 主动和被动场景交替
+- 每章2-3个场景
+- 明确标注场景类型和三要素
+- 每个场景都有明确的冲突"
 
-#### Detailed Report
-```
-"Create a bug report:
-Title: Login fails with special characters
-Steps: 1) Enter email with '+' 2) Submit form 3) See error
-Expected: Login succeeds
-Actual: 500 error
-Priority: High
-Environment: Production"
-```
+"为每个场景生成详细的_Prompt字段"
 
-#### From Error Logs
+"检查场景清单的节奏是否合理"
 ```
-"Create a bug report from this error: [paste stack trace]"
-"Document this bug from the Sentry alert: [link]"
-```
 
-### Bug Resolution
+### 场景写作提示
 
-#### Investigation
 ```
-"Investigate the root cause of bug #45"
-"Analyze why the payment webhook is failing"
-"Debug the performance issue in the search endpoint"
-```
+"撰写场景1.1，要求：
+- 字数：2000-2500字
+- 展现主角性格：谨慎、善良
+- 建立日常世界
+- 埋下伏笔：神秘老人的话
+- 以突发事件结束"
 
-#### Fix Implementation
-```
-"Create a fix for bug #45 in user authentication"
-"Implement a solution for the payment timeout issue"
-"Fix the memory leak in the notification service"
+"写高潮场景，注意：
+- 运用之前的所有伏笔
+- 体现主角的成长
+- 情感冲击力强
+- 对决不仅是力量，更是理念"
 ```
 
-## Mid-Implementation Changes
+## 场景类型示例
 
-### When Specs Change During Development
+### 主动场景示例
 
-Requirements and designs often evolve during implementation. When this happens, you need to keep tasks.md aligned with the current spec while preserving completed work.
-
-### Using the Task Refresh Feature
-
-The AI has access to comprehensive task refresh instructions through the refresh-tasks prompt. Simply inform the AI about your changes:
-
-#### Basic Task Refresh
-```
-"The requirements have been updated. Please refresh tasks.md to align with the current requirements.md and design.md."
 ```
-
-#### Detailed Task Refresh with Context
+"撰写主动场景2.3：
+- 目标：主角要潜入城堡获取情报
+- 冲突：遭遇严密守卫和魔法陷阱
+- 挫折：被发现身份，被迫仓皇逃跑
+- 字数：约2000字
+- 突出紧张刺激的氛围"
 ```
-"I've updated the spec with the following changes:
-- Removed the reporting module
-- Changed database from MongoDB to PostgreSQL
-- Added social login feature
 
-Please refresh tasks.md following the task refresh process:
-1. Preserve all completed and in-progress tasks
-2. Add migration tasks for the database change
-3. Remove pending tasks for the reporting module
-4. Add new tasks for social login"
-```
+### 被动场景示例
 
-#### Architecture Change Requiring Migration
 ```
-"We're switching from REST API to GraphQL. Several REST endpoints are already implemented. Please update tasks.md with:
-1. All completed REST work preserved
-2. Migration tasks to wrap REST logic in GraphQL resolvers
-3. New GraphQL implementation tasks
-4. Cleanup tasks to remove REST after GraphQL is verified"
+"撰写被动场景2.4：
+- 反应：对逃跑失败的沮丧和恐惧
+- 困境：继续冒险可能送命，放弃则无法救出朋友
+- 决定：想到新的计划，决定寻求盟友帮助
+- 字数：约1500字
+- 深入内心戏，展现性格"
 ```
-
-### Expected AI Behavior
-
-When you request a task refresh, the AI will:
-
-1. **Analyze Current State**
-   - Read requirements.md and design.md for current spec
-   - Identify completed, in-progress, and pending tasks
-   - Determine what features have been added, removed, or changed
 
-2. **Preserve Completed Work**
-   - Keep all [x] completed tasks unchanged
-   - Keep all [-] in-progress tasks unchanged
-   - Add notes when completed work is for removed features
+## 修订与优化
 
-3. **Handle Architecture Changes**
-   - Add migration tasks after completed work that needs updating
-   - Create transition tasks for progressive migration
-   - Include verification tasks before removing old implementation
+### 请求修改
 
-4. **Update Pending Tasks**
-   - Remove pending tasks for deleted features
-   - Update pending tasks for changed requirements
-   - Add new tasks for new features
-
-5. **Maintain Task Structure**
-   - Keep sequential numbering
-   - Preserve task format
-   - Include requirement references
-   - Maintain dependency order
-
-### Example Scenarios
-
-#### Feature Removal
-```
-"We've decided to remove the reporting module from the spec. Update tasks.md accordingly."
 ```
+"修改简要大纲中的第三句话，
+加强主角的内心冲突，
+使两难抉择更加痛苦"
 
-Expected AI behavior:
-- Keep all completed reporting tasks with their [x] status
-- Keep all in-progress reporting tasks with their [-] status
-- Remove only pending [ ] reporting tasks
-- Add note: "_Note: Reporting feature removed from spec but completed work preserved_"
+"调整详细大纲的第二幕节奏，
+前半部分太平淡，增加小冲突"
 
-#### Architecture Change with Completed Work
+"场景3.2的字数太少，扩展到2000字，
+增加环境描写和人物内心活动"
 ```
-"We're switching from MongoDB to PostgreSQL. Update the pending database tasks. Note that we've already implemented MongoDB schemas and connection logic."
-```
 
-Expected AI behavior:
-- Preserve all completed MongoDB tasks exactly as written
-- Preserve all in-progress MongoDB tasks exactly as written
-- Add new migration tasks immediately after completed MongoDB work:
-  - Migrate MongoDB schemas to PostgreSQL tables
-  - Replace MongoDB connection logic with PostgreSQL client
-  - Update database queries from MongoDB to PostgreSQL syntax
-  - Migrate existing MongoDB data to PostgreSQL
-  - Update environment configuration for PostgreSQL
-  - Remove MongoDB dependencies after migration verified
-- Update remaining pending database tasks to use PostgreSQL
-- Maintain task numbering sequence
+### 一致性检查
 
-#### Feature Addition
-```
-"Add social login to the authentication spec. The requirements and design have been updated."
 ```
+"检查场景5.1中主角的行为
+是否符合人物档案中的性格设定"
 
-Expected AI behavior:
-- Analyze current task structure for logical insertion point
-- Add new social login tasks with appropriate numbering
-- Reference the specific requirements for social login
-- Ensure new tasks maintain dependency order
-- If basic auth is already implemented, add integration tasks
+"检查世界观设定是否在所有场景中保持一致"
 
-### Handling Architecture Migrations
-
-When architecture changes affect already-implemented code:
-
-#### REST to GraphQL Migration
-```
-"We're changing from REST to GraphQL. Several REST endpoints are already implemented."
+"验证所有伏笔是否都已回收"
 ```
 
-Expected task additions:
-- Preserve completed REST endpoint tasks
-- Add GraphQL schema definition tasks
-- Add resolver implementation tasks
-- Add migration tasks to wrap existing REST logic in GraphQL resolvers
-- Add tasks to update client code to use GraphQL
-- Add cleanup tasks to remove REST endpoints after GraphQL is verified
+### 内容优化
 
-#### Monolith to Microservices Split
 ```
-"We're splitting the monolithic user service into separate auth and profile services."
-```
-
-Expected task additions:
-- Preserve completed monolithic service tasks
-- Add service separation tasks
-- Add inter-service communication tasks
-- Add data migration tasks if databases are splitting
-- Add deployment configuration tasks for new services
-- Add cleanup tasks to remove monolithic code after services are verified
+"优化场景2.1的对话，
+使其更自然生动，符合人物性格"
 
-### Task Format for Migrations
+"加强场景8.3的画面感，
+增加感官细节描写"
 
-Migration tasks should clearly indicate their purpose:
-
-```
-"After refreshing tasks, I see you've added:
-- [ ] 2.4 Migrate MongoDB schemas to PostgreSQL tables
-  - File: src/database/migrations/mongo-to-postgres.ts
-  - Convert document schemas to relational tables
-  - Map embedded documents to foreign key relationships
-  - Preserve all existing data relationships
-  - Purpose: Transition database layer to new architecture
-  - _Leverage: Completed MongoDB schemas in tasks 2.1-2.3_
-  - _Requirements: Design section 3.2_"
+"重写高潮场景的前半部分，
+提升紧张感和节奏"
 ```
 
-### Communicating Changes to AI
+## 特定风格请求
 
-When informing the AI about spec changes:
+### 玄幻小说
 
-#### Be Specific About Changes and Impact
 ```
-"The payment processing requirements have changed. Stripe is now required instead of PayPal. We've already implemented PayPal webhook handlers. Please update tasks.md to reflect this change, including migration tasks."
+"创建一个修真玄幻小说，要求：
+- 清晰的修炼体系（练气、筑基、金丹...）
+- 每个境界有明确标志
+- 主角有特殊机遇但不是无敌
+- 重视人物关系和情感"
 ```
 
-#### Provide Context for Preservation and Migration
-```
-"Although we're moving from MongoDB to PostgreSQL, keep all completed MongoDB tasks since that work is already done. Add migration tasks to transition the implemented MongoDB code to PostgreSQL."
-```
+### 都市言情
 
-#### Request Validation
 ```
-"After updating tasks.md, confirm that all requirements in requirements.md have corresponding tasks, migration paths exist for architecture changes, and that no pending tasks exist for removed features."
+"创建都市言情故事：
+- 现代职场背景
+- 霸总vs独立女性
+- 先婚后爱情节
+- 避免玛丽苏，女主有成长"
 ```
-
-### Progressive Migration Strategy
-
-For major architecture changes, the AI should create tasks that support progressive migration:
-
-1. Implement new architecture alongside existing
-2. Add compatibility layer tasks
-3. Migrate functionality incrementally
-4. Verify each migration step
-5. Remove old implementation only after full verification
 
-This ensures the application remains functional throughout the transition.
+### 悬疑推理
 
-### Using the Refresh Tasks Prompt
-
-You can also explicitly invoke the refresh tasks prompt:
-
 ```
-"Use the refresh-tasks prompt for the user-auth spec. The changes are: switched from JWT to OAuth2 for authentication."
+"创建悬疑推理小说：
+- 多重反转
+- 伏笔密集
+- 线索合理可推理
+- 真相震撼但符合逻辑"
 ```
-
-The AI will then follow the comprehensive refresh instructions to update your tasks while preserving all completed work.
-
-## Advanced Patterns
 
-### Multi-Spec Workflows
+## 团队协作
 
-#### Related Specs
-```
-"Create a spec for admin-dashboard that integrates with:
-- user-management spec
-- analytics spec
-- reporting spec"
-```
+### 分配创作
 
-#### Spec Dependencies
 ```
-"Create a spec for notifications that depends on:
-- user-auth being complete
-- message-queue being implemented
-- email-service being available"
+"我负责第1-5章，请生成这些章节的场景清单"
+"团队成员会写第6-10章"
 ```
 
-### Incremental Development
-
-#### MVP First
-```
-"Create an MVP spec for user-profiles with just:
-- Basic profile creation
-- Display name and avatar
-- Public profile view
-(We'll add social features later)"
-```
+### 审阅反馈
 
-#### Enhancement Specs
 ```
-"Create an enhancement spec for user-auth adding:
-- Social login (Google, GitHub)
-- Biometric authentication
-- Enhanced session management
-- Account linking"
+"审阅场景3.2，提出改进建议"
+"检查章节过渡是否流畅"
 ```
 
-### Complex Scenarios
+## 进度管理
 
-#### Migration Specs
-```
-"Create a spec for migrating from MongoDB to PostgreSQL:
-- Document current schema
-- Design new relational structure
-- Plan zero-downtime migration
-- Include rollback procedures"
-```
-
-#### Refactoring Specs
-```
-"Create a refactoring spec to:
-- Split the monolith into services
-- Extract shared components
-- Improve test coverage to 80%
-- Maintain backward compatibility"
-```
+### 批量操作
 
-#### Performance Specs
 ```
-"Create a performance optimization spec:
-- Profile current bottlenecks
-- Design caching strategy
-- Plan database indexing
-- Implement monitoring"
+"撰写第1章的所有场景"
+"完成第一幕（第1-8章）的所有场景"
 ```
-
-## Workflow Combinations
 
-### Complete Feature Flow
-```
-1. "Create steering documents for the project"
-2. "Create a spec for user authentication"
-3. "Review and approve requirements"
-4. "Review and approve design"
-5. "Implement task 1.1 - database schema"
-6. "Implement task 1.2 - authentication service"
-7. "Create tests for the authentication flow"
-8. "Mark all tasks as complete"
-```
+### 状态查询
 
-### Parallel Development
 ```
-"While I review the requirements, start drafting the API design"
-"Create specs for both frontend and backend in parallel"
-"Work on UI tasks while the backend team does API tasks"
+"显示所有进行中的场景"
+"列出本周完成的场景"
+"预计完成时间"
 ```
 
-### Iterative Refinement
-```
-1. "Create initial spec for search"
-2. "Implement basic search (tasks 1-3)"
-3. "Create enhancement spec for advanced search"
-4. "Add filtering and sorting features"
-5. "Create optimization spec for search performance"
-```
+## 常见错误避免
 
-## Context-Aware Prompts
+### ❌ 避免的提示词
 
-### Using Project Context
 ```
-"Create a spec that follows our existing patterns"
-"Implement this task consistent with our codebase"
-"Design this feature to integrate with our current architecture"
+"写一个好看的小说"  # 太模糊
+"帮我写完整本书"    # 跳过流程
+"继续"             # 缺少上下文
 ```
 
-### Referencing Other Specs
-```
-"Create a spec similar to user-auth but for admin authentication"
-"Use the same design patterns as in the payment spec"
-"Follow the task structure from our notification spec"
-```
+### ✅ 推荐的提示词
 
-### Building on Previous Work
 ```
-"Extend the user-auth spec to include team management"
-"Add GraphQL support to the existing REST API spec"
-"Enhance the search spec with machine learning features"
+"创建一个玄幻小说的简要大纲，主题是成长与救赎"
+"扩展简要大纲为详细大纲，强调人物成长弧线"
+"撰写场景1.1，展现主角的日常生活和性格特点"
 ```
-
-## Tips for Effective Prompting
 
-### Be Specific
-❌ **Vague**: "Create a login spec"
-✅ **Specific**: "Create a spec for email/password login with 2FA, remember me, and password reset"
+## 最佳实践
 
-### Provide Context
-❌ **No context**: "Implement the task"
-✅ **With context**: "Implement task 1.2 using our existing Express middleware and PostgreSQL database"
+1. **明确具体** - 提供清晰的要求和限制
+2. **遵循流程** - 按顺序完成各阶段
+3. **提供反馈** - 及时审阅并给出修改意见
+4. **保持一致** - 确保设定和人物前后一致
+5. **适时调整** - 根据创作进展调整计划
 
-### Set Clear Expectations
-❌ **Unclear**: "Make it better"
-✅ **Clear**: "Improve the design to handle 10x current traffic with response times under 200ms"
+## 示例工作流程
 
-### Use Incremental Requests
-❌ **Too much**: "Create 5 specs and implement everything"
-✅ **Incremental**: "Create the user-auth spec first, then we'll review before moving to the next"
+### 完整创作流程示例
 
-### Reference Existing Work
-❌ **Starting fresh**: "Create a new payment system"
-✅ **Building on**: "Enhance our payment spec to add subscription billing"
-
-## Common Patterns Library
-
-### CRUD Operations
 ```
-"Create a spec for CRUD operations on products including:
-- Create with validation
-- Read with pagination and filtering
-- Update with optimistic locking
-- Soft delete with recovery option"
-```
+# 第1步：创建指导文档
+"创建故事概念文档"
+[审批]
 
-### Authentication & Authorization
-```
-"Create an auth spec with:
-- JWT-based authentication
-- Role-based access control
-- API key management
-- Session handling
-- Refresh token rotation"
-```
+"创建世界观设定文档"
+[审批]
 
-### Real-time Features
-```
-"Create a spec for real-time chat:
-- WebSocket connections
-- Message persistence
-- Typing indicators
-- Read receipts
-- Offline message queue"
-```
+"创建人物档案文档"
+[审批]
 
-### File Management
-```
-"Create a file upload spec:
-- Chunked uploads for large files
-- Progress tracking
-- Resume capability
-- Virus scanning
-- CDN integration"
-```
+# 第2步：创建简要大纲
+"创建 my-fantasy-novel 的简要大纲"
+[审批]
 
-### Analytics & Reporting
-```
-"Create an analytics spec:
-- Event tracking
-- Custom dimensions
-- Real-time dashboards
-- Scheduled reports
-- Data export options"
-```
+# 第3步：创建详细大纲
+"扩展为详细大纲"
+[审批]
 
-## Troubleshooting Prompts
+# 第4步：生成场景清单
+"生成场景清单"
+[审批]
 
-### When Things Go Wrong
-```
-"Why is this spec not showing up?"
-"Debug why the task isn't completing"
-"What's blocking the approval?"
-"Help me understand this error"
-```
+# 第5步：开始创作
+"撰写场景1.1"
+"撰写场景1.2"
+"撰写场景2.1"
+...
 
-### Getting Unstuck
-```
-"What should I do next?"
-"Show me what's blocking progress"
-"What tasks can I work on while waiting?"
-"How do I resolve this dependency?"
+# 第6步：审阅优化
+"检查第1章的一致性"
+"优化第1章的节奏"
 ```
 
-## Related Documentation
+## 更多资源
 
-- [User Guide](USER-GUIDE.md) - General usage instructions
-- [Workflow Process](WORKFLOW.md) - Understanding the workflow
-- [Tools Reference](TOOLS-REFERENCE.md) - Complete tool documentation
-- [Troubleshooting](TROUBLESHOOTING.md) - Solving common issues
+- [工作流程指南](WORKFLOW.md) - 详细工作流程说明
+- [用户指南](USER-GUIDE.md) - 基础使用教程
+- [工具参考](TOOLS-REFERENCE.md) - 工具详细说明

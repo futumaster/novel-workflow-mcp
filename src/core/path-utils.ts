@@ -32,45 +32,51 @@ export class PathUtils {
   }
   
   static getWorkflowRoot(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow');
+    return this.safeJoin(projectPath, '.novel-workflow');
   }
 
-  static getSpecPath(projectPath: string, specName: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'specs', specName);
+  static getStoryPath(projectPath: string, storyName: string): string {
+    return this.safeJoin(projectPath, '.novel-workflow', 'stories', storyName);
   }
 
-  static getArchiveSpecPath(projectPath: string, specName: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'archive', 'specs', specName);
+  static getArchiveStoryPath(projectPath: string, storyName: string): string {
+    return this.safeJoin(projectPath, '.novel-workflow', 'archive', 'stories', storyName);
   }
 
-  static getArchiveSpecsPath(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'archive', 'specs');
+  static getArchiveStoriesPath(projectPath: string): string {
+    return this.safeJoin(projectPath, '.novel-workflow', 'archive', 'stories');
   }
 
   static getSteeringPath(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'steering');
+    return this.safeJoin(projectPath, '.novel-workflow', 'steering');
   }
 
 
   static getTemplatesPath(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'templates');
+    return this.safeJoin(projectPath, '.novel-workflow', 'templates');
   }
 
   static getAgentsPath(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'agents');
+    return this.safeJoin(projectPath, '.novel-workflow', 'agents');
   }
 
   static getCommandsPath(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'commands');
+    return this.safeJoin(projectPath, '.novel-workflow', 'commands');
   }
 
   static getApprovalsPath(projectPath: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'approvals');
+    return this.safeJoin(projectPath, '.novel-workflow', 'approvals');
   }
 
-  static getSpecApprovalPath(projectPath: string, specName: string): string {
-    return this.safeJoin(projectPath, '.spec-workflow', 'approvals', specName);
+  static getStoryApprovalPath(projectPath: string, storyName: string): string {
+    return this.safeJoin(projectPath, '.novel-workflow', 'approvals', storyName);
   }
+  
+  // Legacy compatibility methods (for backward compatibility during migration)
+  static getSpecPath = this.getStoryPath;
+  static getArchiveSpecPath = this.getArchiveStoryPath;
+  static getArchiveSpecsPath = this.getArchiveStoriesPath;
+  static getSpecApprovalPath = this.getStoryApprovalPath;
 
 
   // Ensure paths work across Windows, macOS, Linux
@@ -171,8 +177,8 @@ export async function ensureWorkflowDirectory(projectPath: string): Promise<stri
   // Create all necessary subdirectories (approvals created on-demand)
   const directories = [
     workflowRoot,
-    PathUtils.getSpecPath(projectPath, ''),
-    PathUtils.getArchiveSpecsPath(projectPath),
+    PathUtils.getStoryPath(projectPath, ''),
+    PathUtils.getArchiveStoriesPath(projectPath),
     PathUtils.getSteeringPath(projectPath),
     PathUtils.getTemplatesPath(projectPath),
     PathUtils.getAgentsPath(projectPath),
