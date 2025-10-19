@@ -1,5 +1,5 @@
 {
-  "name": "@pimzino/novel-workflow-mcp",
+  "name": "@ttaqt/novel-workflow-mcp",
   "version": "1.0.0",
   "description": "MCP server for AI-assisted novel writing workflow with real-time web dashboard",
   "main": "dist/index.js",

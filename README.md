@@ -1,6 +1,6 @@
 # Novel Workflow MCP
 
-[![npm version](https://img.shields.io/npm/v/@pimzino/novel-workflow-mcp)](https://www.npmjs.com/package/@pimzino/novel-workflow-mcp)
+[![npm version](https://img.shields.io/npm/v/@ttaqt/novel-workflow-mcp)](https://www.npmjs.com/package/@ttaqt/novel-workflow-mcp)
 
 一个基于 Model Context Protocol (MCP) 的AI辅助小说创作工作流服务器，配备实时仪表板和VSCode扩展。
 
@@ -28,7 +28,7 @@
   "mcpServers": {
     "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
+      "args": ["-y", "@ttaqt/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
     }
   }
 }
@@ -40,7 +40,7 @@
   "mcpServers": {
     "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project", "--AutoStartDashboard"]
+      "args": ["-y", "@ttaqt/novel-workflow-mcp@latest", "/path/to/your/novel-project", "--AutoStartDashboard"]
     }
   }
 }
@@ -50,7 +50,7 @@
 
 **选项 A: Web 仪表板**（CLI用户必选）
 ```bash
-npx -y @pimzino/novel-workflow-mcp@latest /path/to/your/novel-project --dashboard
+npx -y @ttaqt/novel-workflow-mcp@latest /path/to/your/novel-project --dashboard
 ```
 
 **选项 B: VSCode 扩展**（推荐VSCode用户）
@@ -76,7 +76,7 @@ npx -y @pimzino/novel-workflow-mcp@latest /path/to/your/novel-project --dashboar
   "mcpServers": {
     "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
+      "args": ["-y", "@ttaqt/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
     }
   }
 }
@@ -88,7 +88,7 @@ npx -y @pimzino/novel-workflow-mcp@latest /path/to/your/novel-project --dashboar
   "mcpServers": {
     "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project", "--AutoStartDashboard"]
+      "args": ["-y", "@ttaqt/novel-workflow-mcp@latest", "/path/to/your/novel-project", "--AutoStartDashboard"]
     }
   }
 }
@@ -104,7 +104,7 @@ npx -y @pimzino/novel-workflow-mcp@latest /path/to/your/novel-project --dashboar
   "mcpServers": {
     "novel-workflow": {
       "command": "npx",
-      "args": ["-y", "@pimzino/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
+      "args": ["-y", "@ttaqt/novel-workflow-mcp@latest", "/path/to/your/novel-project"]
     }
   }
 }

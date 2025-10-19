@@ -26,7 +26,7 @@ npm login
 
 ```json
 {
-  "name": "@pimzino/novel-workflow-mcp",
+  "name": "@ttaqt/novel-workflow-mcp",
   "version": "1.0.0",
   "description": "MCP server for AI-assisted novel writing workflow",
   "main": "dist/index.js",
@@ -56,8 +56,8 @@ npm publish --access public
 ### 4. 验证发布
 
 发布成功后，可以查看：
-- NPM页面: https://www.npmjs.com/package/@pimzino/novel-workflow-mcp
-- 安装测试: `npx @pimzino/novel-workflow-mcp@latest --help`
+- NPM页面: https://www.npmjs.com/package/@ttaqt/novel-workflow-mcp
+- 安装测试: `npx @ttaqt/novel-workflow-mcp@latest --help`
 
 ---
 
@@ -86,7 +86,7 @@ npm publish --access public
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "/path/to/your/novel-project",
         "--AutoStartDashboard"
       ]
@@ -98,7 +98,7 @@ npm publish --access public
 **参数说明**：
 - `npx` - 使用 npx 运行最新版本
 - `-y` - 自动确认安装
-- `@pimzino/novel-workflow-mcp@latest` - 包名和版本
+- `@ttaqt/novel-workflow-mcp@latest` - 包名和版本
 - `/path/to/your/novel-project` - **替换为你的小说项目路径**
 - `--AutoStartDashboard` - 自动启动Web仪表板
 
@@ -111,7 +111,7 @@ npm publish --access public
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "/path/to/your/novel-project"
       ]
     }
@@ -149,7 +149,7 @@ npm publish --access public
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "~/novels/fantasy-adventure",
         "--AutoStartDashboard",
         "--port",
@@ -160,7 +160,7 @@ npm publish --access public
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "~/novels/urban-romance",
         "--AutoStartDashboard",
         "--port",

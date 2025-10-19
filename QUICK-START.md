@@ -19,16 +19,16 @@ npm publish --access public
 
 **预期输出**：
 ```
-npm notice 📦  @pimzino/novel-workflow-mcp@1.0.0
+npm notice 📦  @ttaqt/novel-workflow-mcp@1.0.0
 npm notice === Tarball Contents ===
 ...
 npm notice === Tarball Details ===
 ...
-+ @pimzino/novel-workflow-mcp@1.0.0
++ @ttaqt/novel-workflow-mcp@1.0.0
 ```
 
 **发布完成后可访问**：
-- https://www.npmjs.com/package/@pimzino/novel-workflow-mcp
+- https://www.npmjs.com/package/@ttaqt/novel-workflow-mcp
 
 ---
 
@@ -59,7 +59,7 @@ code ~/.cursor/mcp.json
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "/Users/wenxinhuang/novels/my-story",
         "--AutoStartDashboard"
       ]
@@ -129,7 +129,7 @@ AI 将引导你完成：
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "/path/to/your/novel"
       ]
     }
@@ -146,7 +146,7 @@ AI 将引导你完成：
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "/path/to/your/novel",
         "--AutoStartDashboard"
       ]
@@ -164,7 +164,7 @@ AI 将引导你完成：
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "/path/to/your/novel",
         "--AutoStartDashboard",
         "--port",
@@ -184,7 +184,7 @@ AI 将引导你完成：
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "~/novels/fantasy-adventure",
         "--AutoStartDashboard"
       ]
@@ -193,7 +193,7 @@ AI 将引导你完成：
       "command": "npx",
       "args": [
         "-y",
-        "@pimzino/novel-workflow-mcp@latest",
+        "@ttaqt/novel-workflow-mcp@latest",
         "~/novels/urban-romance",
         "--AutoStartDashboard"
       ]
@@ -336,7 +336,7 @@ AI：[显示已完成场景、剩余场景、完成百分比]
 ### 在线资源
 
 - GitHub: https://github.com/futumaster/novel-workflow-mcp
-- npm: https://www.npmjs.com/package/@pimzino/novel-workflow-mcp
+- npm: https://www.npmjs.com/package/@ttaqt/novel-workflow-mcp
 
 ---
 
