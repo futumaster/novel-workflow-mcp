@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "novel-workflow": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ttaqt/novel-workflow-mcp@latest",
+        "~/novels/my-story",
+        "--AutoStartDashboard"
+      ]
+    }
+  }
+}
+
