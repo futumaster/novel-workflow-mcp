@@ -5,19 +5,12 @@ import { steeringGuideTool, steeringGuideHandler } from './steering-guide.js';
 import { approvalsTool, approvalsHandler } from './approvals.js';
 import { ToolContext, ToolResponse, MCPToolResponse, toMCPResponse } from '../types.js';
 
-// Legacy support
-import { specWorkflowGuideTool, specWorkflowGuideHandler } from './spec-workflow-guide.js';
-import { specStatusTool, specStatusHandler } from './spec-status.js';
-
 export function registerTools(): Tool[] {
   return [
     novelWorkflowGuideTool,
-    steeringGuideTool,
     storyStatusTool,
-    approvalsTool,
-    // Legacy tools for backward compatibility
-    specWorkflowGuideTool,
-    specStatusTool
+    steeringGuideTool,
+    approvalsTool
   ];
 }
 
@@ -38,13 +31,6 @@ export async function handleToolCall(name: string, args: any, context: ToolConte
         break;
       case 'approvals':
         response = await approvalsHandler(args, context);
-        break;
-      // Legacy support
-      case 'spec-workflow-guide':
-        response = await specWorkflowGuideHandler(args, context);
-        break;
-      case 'spec-status':
-        response = await specStatusHandler(args, context);
         break;
       default:
         throw new Error(`Unknown tool: ${name}`);

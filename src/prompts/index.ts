@@ -7,19 +7,13 @@ import { createStoryPrompt } from './create-spec.js';
 import { createSteeringDocPrompt } from './create-steering-doc.js';
 import { writeScenePrompt } from './write-scene.js';
 import { storyStatusPrompt } from './story-status.js';
-import { injectSpecWorkflowGuidePrompt } from './inject-spec-workflow-guide.js';
-import { injectSteeringGuidePrompt } from './inject-steering-guide.js';
-import { refreshTasksPrompt } from './refresh-tasks.js';
 
 // Registry of all prompts
 const promptDefinitions: PromptDefinition[] = [
   createStoryPrompt,
   createSteeringDocPrompt,
   writeScenePrompt,
-  storyStatusPrompt,
-  injectSpecWorkflowGuidePrompt,
-  injectSteeringGuidePrompt,
-  refreshTasksPrompt
+  storyStatusPrompt
 ];
 
 /**

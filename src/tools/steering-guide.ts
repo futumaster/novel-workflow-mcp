@@ -3,10 +3,10 @@ import { ToolContext, ToolResponse } from '../types.js';
 
 export const steeringGuideTool: Tool = {
   name: 'steering-guide',
-  description: `Load guide for creating project steering documents.
+  description: `Load guide for creating story steering documents.
 
 # Instructions
-Call ONLY when user explicitly requests steering document creation or asks about project architecture docs. Not part of standard spec workflow. Provides templates and guidance for product.md, tech.md, and structure.md creation. Its important that you follow this workflow exactly to avoid errors.`,
+Call ONLY when user explicitly requests steering document creation or asks about story foundation docs. Not part of standard writing workflow. Provides templates and guidance for story-concept.md, world-building.md, and character-profiles.md creation. Its important that you follow this workflow exactly to avoid errors.`,
   inputSchema: {
     type: 'object',
     properties: {},
@@ -17,71 +17,71 @@ Call ONLY when user explicitly requests steering document creation or asks about
 export async function steeringGuideHandler(args: any, context: ToolContext): Promise<ToolResponse> {
   return {
     success: true,
-    message: 'Steering workflow guide loaded - follow this workflow exactly to avoid errors',
+    message: 'Story steering workflow guide loaded - follow this workflow exactly',
     data: {
       guide: getSteeringGuide(),
       dashboardUrl: context.dashboardUrl
     },
     nextSteps: [
       'Only proceed if user requested steering docs',
-      'Create product.md first',
-      'Then tech.md and structure.md',
-      'Reference in future specs',
-      context.dashboardUrl ? `Dashboard: ${context.dashboardUrl}` : 'Please start the dashboard or use VS Code extension "Spec Workflow MCP"'
+      'Create story-concept.md first',
+      'Then world-building.md and character-profiles.md',
+      'Reference in future stories',
+      context.dashboardUrl ? `Dashboard: ${context.dashboardUrl}` : 'Please start the dashboard or use "Novel Workflow MCP"'
     ]
   };
 }
 
 function getSteeringGuide(): string {
-  return `# Steering Workflow
+  return `# 指导文档工作流 - Story Steering Workflow
 
-## Overview
+## 概述
 
-Create project-level guidance documents when explicitly requested. Steering docs establish vision, architecture, and conventions for established codebases. Its important that you follow this workflow exactly to avoid errors.
+仅在明确请求时创建故事级别的指导文档。指导文档为整个小说项目建立核心概念、世界观和人物设定。严格遵循此工作流程避免错误。
 
-## Workflow Diagram
+## 工作流程图
 
 \`\`\`mermaid
 flowchart TD
-    Start([Start: Setup steering docs]) --> Guide[steering-guide<br/>Load workflow instructions]
+    Start([开始：设置指导文档]) --> Guide[steering-guide<br/>加载工作流指导]
 
-    %% Phase 1: Product
-    Guide --> P1_Template[Check user-templates first,<br/>then read template:<br/>product-template.md]
-    P1_Template --> P1_Generate[Generate vision & goals]
-    P1_Generate --> P1_Create[Create file:<br/>.spec-workflow/steering/<br/>product.md]
-    P1_Create --> P1_Approve[approvals<br/>action: request<br/>filePath only]
-    P1_Approve --> P1_Status[approvals<br/>action: status<br/>poll status]
+    %% 阶段 1: 故事概念
+    Guide --> P1_Template[检查user-templates,<br/>然后读取模板:<br/>story-concept-template.md]
+    P1_Template --> P1_Generate[生成故事核心概念]
+    P1_Generate --> P1_Create[创建文件:<br/>.novel-workflow/steering/<br/>story-concept.md]
+    P1_Create --> P1_Approve[approvals<br/>action: request<br/>仅filePath]
+    P1_Approve --> P1_Status[approvals<br/>action: status<br/>轮询状态]
     P1_Status --> P1_Check{Status?}
-    P1_Check -->|needs-revision| P1_Update[Update document using user comments for guidance]
+    P1_Check -->|needs-revision| P1_Update[根据评论更新文档]
     P1_Update --> P1_Create
     P1_Check -->|approved| P1_Clean[approvals<br/>action: delete]
     P1_Clean -->|failed| P1_Status
 
-    %% Phase 2: Tech
-    P1_Clean -->|success| P2_Template[Check user-templates first,<br/>then read template:<br/>tech-template.md]
-    P2_Template --> P2_Analyze[Analyze tech stack]
-    P2_Analyze --> P2_Create[Create file:<br/>.spec-workflow/steering/<br/>tech.md]
-    P2_Create --> P2_Approve[approvals<br/>action: request<br/>filePath only]
-    P2_Approve --> P2_Status[approvals<br/>action: status<br/>poll status]
+    %% 阶段 2: 世界观设定
+    P1_Clean -->|success| P2_Template[检查user-templates,<br/>然后读取模板:<br/>world-building-template.md]
+    P2_Template --> P2_Build[构建世界观]
+    P2_Build --> P2_Create[创建文件:<br/>.novel-workflow/steering/<br/>world-building.md]
+    P2_Create --> P2_Approve[approvals<br/>action: request<br/>仅filePath]
+    P2_Approve --> P2_Status[approvals<br/>action: status<br/>轮询状态]
     P2_Status --> P2_Check{Status?}
-    P2_Check -->|needs-revision| P2_Update[Update document using user comments for guidance]
+    P2_Check -->|needs-revision| P2_Update[根据评论更新文档]
     P2_Update --> P2_Create
     P2_Check -->|approved| P2_Clean[approvals<br/>action: delete]
     P2_Clean -->|failed| P2_Status
 
-    %% Phase 3: Structure
-    P2_Clean -->|success| P3_Template[Check user-templates first,<br/>then read template:<br/>structure-template.md]
-    P3_Template --> P3_Analyze[Analyze codebase structure]
-    P3_Analyze --> P3_Create[Create file:<br/>.spec-workflow/steering/<br/>structure.md]
-    P3_Create --> P3_Approve[approvals<br/>action: request<br/>filePath only]
-    P3_Approve --> P3_Status[approvals<br/>action: status<br/>poll status]
+    %% 阶段 3: 人物档案
+    P2_Clean -->|success| P3_Template[检查user-templates,<br/>然后读取模板:<br/>character-profiles-template.md]
+    P3_Template --> P3_Build[构建人物档案]
+    P3_Build --> P3_Create[创建文件:<br/>.novel-workflow/steering/<br/>character-profiles.md]
+    P3_Create --> P3_Approve[approvals<br/>action: request<br/>仅filePath]
+    P3_Approve --> P3_Status[approvals<br/>action: status<br/>轮询状态]
     P3_Status --> P3_Check{Status?}
-    P3_Check -->|needs-revision| P3_Update[Update document using user comments for guidance]
+    P3_Check -->|needs-revision| P3_Update[根据评论更新文档]
     P3_Update --> P3_Create
     P3_Check -->|approved| P3_Clean[approvals<br/>action: delete]
     P3_Clean -->|failed| P3_Status
 
-    P3_Clean -->|success| Complete([Steering docs complete])
+    P3_Clean -->|success| Complete([指导文档完成])
 
     style Start fill:#e6f3ff
     style Complete fill:#e6f3ff
@@ -90,103 +90,115 @@ flowchart TD
     style P3_Check fill:#ffe6e6
 \`\`\`
 
-## Steering Workflow Phases
+## 指导文档阶段
 
-### Phase 1: Product Document
-**Purpose**: Define vision, goals, and user outcomes.
+### 阶段 1: 故事概念文档
+**目的**：定义故事核心概念、主题和两难抉择。
 
-**File Operations**:
-- Check for custom template: \`.spec-workflow/user-templates/product-template.md\`
-- Read template: \`.spec-workflow/templates/product-template.md\` (if no custom template)
-- Create document: \`.spec-workflow/steering/product.md\`
+**文件操作**:
+- 检查自定义模板：\`.novel-workflow/user-templates/story-concept-template.md\`
+- 读取模板：\`.novel-workflow/templates/story-concept-template.md\`（如无自定义）
+- 创建文档：\`.novel-workflow/steering/story-concept.md\`
 
-**Tools**:
-- steering-guide: Load workflow instructions
-- approvals: Manage approval workflow (actions: request, status, delete)
+**工具**:
+- steering-guide：加载工作流指导
+- approvals：管理审批工作流（操作：request, status, delete）
 
-**Process**:
-1. Load steering guide for workflow overview
-2. Check for custom template at \`.spec-workflow/user-templates/product-template.md\`
-3. If no custom template, read from \`.spec-workflow/templates/product-template.md\`
-4. Generate product vision and goals
-5. Create \`product.md\` at \`.spec-workflow/steering/product.md\`
-6. Request approval using approvals tool with action:'request' (filePath only)
-7. Poll status using approvals with action:'status' until approved/needs-revision (NEVER accept verbal approval)
-8. If needs-revision: update document using comments, create NEW approval, do NOT proceed
-9. Once approved: use approvals with action:'delete' (must succeed) before proceeding
-10. If delete fails: STOP - return to polling
+**流程**:
+1. 加载 steering guide 获取工作流概述
+2. 检查 \`.novel-workflow/user-templates/story-concept-template.md\`
+3. 如无自定义，从 \`.novel-workflow/templates/story-concept-template.md\` 读取
+4. 生成故事核心概念：
+   - 一句话概括（类型+主角+任务，≤25词）
+   - 五句话梗概（三幕式结构）
+   - 两次两难抉择
+   - 道德前提
+5. 在 \`.novel-workflow/steering/story-concept.md\` 创建文档
+6. 使用 approvals 请求审批（action:'request'，仅filePath）
+7. 轮询状态（action:'status'）直到 approved/needs-revision（绝不接受口头批准）
+8. 如 needs-revision：更新文档，创建新审批，不要继续
+9. 一旦 approved：使用 approvals（action:'delete'，必须成功）然后继续
+10. 如删除失败：停止 - 返回轮询
 
-### Phase 2: Tech Document
-**Purpose**: Document technology decisions and architecture.
+### 阶段 2: 世界观设定文档
+**目的**：建立完整的世界观体系。
 
-**File Operations**:
-- Check for custom template: \`.spec-workflow/user-templates/tech-template.md\`
-- Read template: \`.spec-workflow/templates/tech-template.md\` (if no custom template)
-- Create document: \`.spec-workflow/steering/tech.md\`
+**文件操作**:
+- 检查自定义模板：\`.novel-workflow/user-templates/world-building-template.md\`
+- 读取模板：\`.novel-workflow/templates/world-building-template.md\`（如无自定义）
+- 创建文档：\`.novel-workflow/steering/world-building.md\`
 
-**Tools**:
-- approvals: Manage approval workflow (actions: request, status, delete)
+**工具**:
+- approvals：管理审批工作流
 
-**Process**:
-1. Check for custom template at \`.spec-workflow/user-templates/tech-template.md\`
-2. If no custom template, read from \`.spec-workflow/templates/tech-template.md\`
-3. Analyze existing technology stack
-4. Document architectural decisions and patterns
-5. Create \`tech.md\` at \`.spec-workflow/steering/tech.md\`
-6. Request approval using approvals tool with action:'request'
-7. Poll status using approvals with action:'status' until approved/needs-revision
-8. If needs-revision: update document using comments, create NEW approval, do NOT proceed
-9. Once approved: use approvals with action:'delete' (must succeed) before proceeding
-10. If delete fails: STOP - return to polling
+**流程**:
+1. 检查 \`.novel-workflow/user-templates/world-building-template.md\`
+2. 如无自定义，从 \`.novel-workflow/templates/world-building-template.md\` 读取
+3. 构建世界观设定：
+   - 时代背景
+   - 地理环境
+   - 社会结构
+   - 力量体系
+   - 特殊设定
+4. 在 \`.novel-workflow/steering/world-building.md\` 创建文档
+5. 使用 approvals 请求审批
+6. 轮询状态直到 approved/needs-revision
+7. 如 needs-revision：更新文档，创建新审批，不要继续
+8. 一旦 approved：删除审批（必须成功）然后继续
+9. 如删除失败：停止 - 返回轮询
 
-### Phase 3: Structure Document
-**Purpose**: Map codebase organization and patterns.
+### 阶段 3: 人物档案文档
+**目的**：建立完整的人物体系和关系网络。
 
-**File Operations**:
-- Check for custom template: \`.spec-workflow/user-templates/structure-template.md\`
-- Read template: \`.spec-workflow/templates/structure-template.md\` (if no custom template)
-- Create document: \`.spec-workflow/steering/structure.md\`
+**文件操作**:
+- 检查自定义模板：\`.novel-workflow/user-templates/character-profiles-template.md\`
+- 读取模板：\`.novel-workflow/templates/character-profiles-template.md\`（如无自定义）
+- 创建文档：\`.novel-workflow/steering/character-profiles.md\`
 
-**Tools**:
-- approvals: Manage approval workflow (actions: request, status, delete)
+**工具**:
+- approvals：管理审批工作流
 
-**Process**:
-1. Check for custom template at \`.spec-workflow/user-templates/structure-template.md\`
-2. If no custom template, read from \`.spec-workflow/templates/structure-template.md\`
-3. Analyze directory structure and file organization
-4. Document coding patterns and conventions
-5. Create \`structure.md\` at \`.spec-workflow/steering/structure.md\`
-6. Request approval using approvals tool with action:'request'
-7. Poll status using approvals with action:'status' until approved/needs-revision
-8. If needs-revision: update document using comments, create NEW approval, do NOT proceed
-9. Once approved: use approvals with action:'delete' (must succeed) before proceeding
-10. If delete fails: STOP - return to polling
-11. After successful cleanup: "Steering docs complete. Ready for spec creation?"
+**流程**:
+1. 检查 \`.novel-workflow/user-templates/character-profiles-template.md\`
+2. 如无自定义，从 \`.novel-workflow/templates/character-profiles-template.md\` 读取
+3. 构建人物档案：
+   - 主角完整档案
+   - 重要配角设定
+   - 对手角色
+   - 人物关系
+   - 成长弧线
+4. 在 \`.novel-workflow/steering/character-profiles.md\` 创建文档
+5. 使用 approvals 请求审批
+6. 轮询状态直到 approved/needs-revision
+7. 如 needs-revision：更新文档，创建新审批，不要继续
+8. 一旦 approved：删除审批（必须成功）
+9. 如删除失败：停止 - 返回轮询
+10. 成功清理后："指导文档完成。准备创建故事大纲？"
 
-## Workflow Rules
+## 工作流程规则
 
-- Create documents directly at specified file paths
-- Check for custom templates in \`.spec-workflow/user-templates/\` first
-- Read templates from \`.spec-workflow/templates/\` directory if no custom template exists
-- Follow exact template structures
-- Get explicit user approval between phases (using approvals tool with action:'request')
-- Complete phases in sequence (no skipping)
-- Approval requests: provide filePath only, never content
-- BLOCKING: Never proceed if approval delete fails
-- CRITICAL: Must have approved status AND successful cleanup before next phase
-- CRITICAL: Verbal approval is NEVER accepted - dashboard or VS Code extension only
-- NEVER proceed on user saying "approved" - check system status only
+- 在指定文件路径直接创建文档
+- 首先检查 \`.novel-workflow/user-templates/\` 中的自定义模板
+- 如无自定义模板，从 \`.novel-workflow/templates/\` 读取
+- 遵循准确的模板结构
+- 各阶段间获取明确的用户批准（使用 approvals 工具，action:'request'）
+- 按顺序完成阶段（不跳过）
+- 审批请求：仅提供 filePath，绝不提供 content
+- 阻塞：如审批删除失败绝不继续
+- 关键：必须有 approved 状态且成功清理才能进入下一阶段
+- 关键：绝不接受口头批准 - 仅通过仪表板或扩展
+- 绝不在用户说"approved"后继续 - 仅检查系统状态
 
-## File Structure
+## 文件结构
 \`\`\`
-.spec-workflow/
-├── templates/           # Auto-populated on server start
-│   ├── product-template.md
-│   ├── tech-template.md
-│   └── structure-template.md
+.novel-workflow/
+├── templates/           # 服务器启动时自动填充
+│   ├── story-concept-template.md
+│   ├── world-building-template.md
+│   └── character-profiles-template.md
 └── steering/
-    ├── product.md
-    ├── tech.md
-    └── structure.md
+    ├── story-concept.md
+    ├── world-building.md
+    └── character-profiles.md
 \`\`\``;
 }
