@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-10-20
+
+### Fixed
+- 🐛 **重要修复**：移除 console 输出避免污染 MCP 响应流
+  - 修复 JSON 解析错误：`Unexpected token 'I', "Initial sn"...`
+  - 移除 approval-storage.ts 中的 console.log/warn
+  - 移除 server.ts 中会干扰 MCP 的 console.error
+  - 移除 index.ts 中的 console 输出
+  - 确保 MCP 响应流纯净，仅包含 JSON 数据
+- 🐛 修复审批系统在 MCP 客户端中的兼容性问题
+- ✅ 完全支持中文路径和特殊字符路径
+
 ## [1.0.3] - 2025-10-19
 
 ### Fixed
