@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-10-20
+
+### Breaking Changes
+- 🔥 **彻底移除所有程序开发相关内容**
+  - 删除工具：spec-workflow-guide, spec-status（保留 novel-workflow-guide, story-status）
+  - 删除提示词：inject-spec-workflow-guide, refresh-tasks, implement-task, spec-status
+  - 删除模板：requirements, design, tasks, product, tech, structure（6个程序开发模板）
+  - **仅保留小说创作相关内容**
+
+### Current Tools (4个纯小说创作工具)
+- ✅ `novel-workflow-guide` - 小说创作工作流指导
+- ✅ `story-status` - 故事进度追踪
+- ✅ `steering-guide` - 指导文档创建（已更新为小说创作描述）
+- ✅ `approvals` - 审批管理
+
+### Current Prompts (4个纯小说创作提示词)
+- ✅ `create-story` - 创建故事文档
+- ✅ `create-steering-doc` - 创建指导文档
+- ✅ `write-scene` - 撰写场景
+- ✅ `story-status` - 故事状态
+
+### Current Templates (6个纯小说创作模板)
+- ✅ `story-concept-template.md` - 故事概念
+- ✅ `world-building-template.md` - 世界观设定
+- ✅ `character-profiles-template.md` - 人物档案
+- ✅ `outline-brief-template.md` - 简要大纲
+- ✅ `outline-detailed-template.md` - 详细大纲
+- ✅ `scenes-template.md` - 场景清单
+
+### Impact
+- 📉 删除文件：16个
+- 📉 移除代码：-1,639 行
+- ✨ 现在是100%纯粹的小说创作工具
+- ⚠️ 不再兼容程序开发用途
+
 ## [1.1.0] - 2025-10-20
 
 ### Fixed
