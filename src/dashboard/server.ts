@@ -67,22 +67,35 @@ export class DashboardServer {
     }
 
     // Only proceed with initialization if we're creating a new dashboard
-    // Fetch package version once at startup
+    // Fetch package version - prefer local package.json for immediate accuracy
     try {
-      const response = await fetch('https://registry.npmjs.org/@pimzino/spec-workflow-mcp/latest');
-      if (response.ok) {
-        const packageInfo = await response.json() as { version?: string };
-        this.packageVersion = packageInfo.version || 'unknown';
-      }
+      // First try local package.json for immediate version info
+      const packageJsonPath = join(__dirname, '..', '..', 'package.json');
+      const packageJsonContent = await readFile(packageJsonPath, 'utf-8');
+      const packageJson = JSON.parse(packageJsonContent) as { version?: string };
+      this.packageVersion = packageJson.version || 'unknown';
+      
+      // Optionally fetch from npm registry in background (don't wait)
+      fetch('https://registry.npmjs.org/@ttaqt/novel-workflow-mcp/latest')
+        .then(response => response.ok ? response.json() : null)
+        .then((packageInfo: any) => {
+          if (packageInfo?.version && packageInfo.version !== this.packageVersion) {
+            console.error(`Note: NPM has newer version ${packageInfo.version}, local is ${this.packageVersion}`);
+          }
+        })
+        .catch(() => {
+          // Silently ignore npm fetch errors
+        });
     } catch {
-      // Fallback to local package.json version if npm request fails
+      // If local package.json fails, try npm registry
       try {
-        const packageJsonPath = join(__dirname, '..', '..', 'package.json');
-        const packageJsonContent = await readFile(packageJsonPath, 'utf-8');
-        const packageJson = JSON.parse(packageJsonContent) as { version?: string };
-        this.packageVersion = packageJson.version || 'unknown';
+        const response = await fetch('https://registry.npmjs.org/@ttaqt/novel-workflow-mcp/latest');
+        if (response.ok) {
+          const packageInfo = await response.json() as { version?: string };
+          this.packageVersion = packageInfo.version || 'unknown';
+        }
       } catch {
-        // Keep default 'unknown' if both npm and local package.json fail
+        // Keep default 'unknown' if both fail
       }
     }
 
