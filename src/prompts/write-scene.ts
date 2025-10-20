@@ -67,9 +67,16 @@ ${context.dashboardUrl ? `- Dashboard: ${context.dashboardUrl}` : ''}
    - For Active scenes, include: Goal (what character wants) / Conflict (obstacles) / Disaster (setback)
    - For Reactive scenes, include: Reaction (emotional response) / Dilemma (weighing options) / Decision (choosing next action)
    - Match the character voice and personality from character-profiles.md
+   - Use character's specific language habits, catchphrases, and speech patterns
    - Follow the world-building rules from world-building.md
    - Write vivid, engaging prose with strong imagery
-   - Show don't tell - use action and dialogue to reveal character and advance plot
+   - Show don't tell - use action and small gestures to reveal emotion
+   - Use sensory details (sight, sound, smell, touch, taste) appropriately
+   - Make dialogue natural with filler words, interruptions, incomplete sentences
+   - Let different characters speak differently
+   - Add realistic imperfections and small mistakes
+   - Control pacing with sentence length variation
+   - Avoid AI common problems: overly rational characters, too-perfect dialogue, excessive description
    - Maintain consistent POV and tense
 
 5. **Complete the Scene:**

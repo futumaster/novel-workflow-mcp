@@ -57,7 +57,13 @@ export class WorkspaceInitializer {
       // Steering document templates
       'story-concept-template',
       'world-building-template',
-      'character-profiles-template'
+      'character-profiles-template',
+      // Writing guides and tools
+      'scene-writing-techniques',
+      'sensory-writing-guide',
+      'reference-analysis-template',
+      'short-story-template',
+      'revision-guide-template'
     ];
     
     for (const template of templates) {

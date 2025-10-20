@@ -5,6 +5,50 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2025-10-20
+
+### Added - 全面质量升级 🎯
+- ✨ **5个全新专业指南和模板**
+  - `reference-analysis-template.md` - 对标作品分析（8步系统化分析法）
+  - `short-story-template.md` - 短篇小说专门模板（知乎盐选等3000-8000字）
+  - `revision-guide-template.md` - 修改打磨指南（6稿打磨法）
+  - `sensory-writing-guide.md` - 五感描写系统（让场景身临其境）
+  - `scene-writing-techniques.md` - 场景写作技巧手册（10大核心技巧）
+
+- ✨ **Character-Profiles模板大幅增强**
+  - 语言特点系统（教育背景、性格、年龄影响用词）
+  - 口头禅设计（让每个人物有辨识度）
+  - 对话风格差异化（对不同人说话方式不同）
+  - 小动作和习惯（紧张/思考/生气/开心时的具体动作）
+  - 不完美的小毛病（增加真实感）
+
+- ✨ **Outline-Detailed模板重大增强**
+  - 情感曲线设计（场景/章节/全书三级情感图）
+  - 冲突升级路径（外部4层级 + 内部4层级系统化设计）
+  - 伏笔与回收清单（表格化管理，确保不遗漏）
+  - 伏笔类型详解（道具/台词/细节/行为）
+
+- ✨ **Scenes模板的_Prompt字段全面强化**
+  - 对话技巧（自然化、口语化、差异化）
+  - 情感层次（Show Don't Tell，多层情感）
+  - 节奏控制（句子长短、段落疏密）
+  - 感官运用（五感选择性使用）
+  - AI避免问题清单（6大常见问题及解决方案）
+
+### Improved
+- 🎭 **Write-Scene提示词增强**
+  - 添加人物语言习惯检查
+  - 添加对话自然化要求
+  - 添加感官细节指导
+  - 添加AI常见问题避免提示
+
+### Impact
+- 📈 新增模板：5个专业指南
+- 📈 模板总数：11个（6个核心 + 5个指南）
+- 📈 模板总行数：约2,500行专业内容
+- 🎯 显著提升：小说的"人味儿"和真实感
+- 🎯 系统化：对话、情感、节奏、感官的完整指导体系
+
 ## [2.0.0] - 2025-10-20
 
 ### Breaking Changes
