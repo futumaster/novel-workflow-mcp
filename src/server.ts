@@ -93,7 +93,7 @@ export class SpecWorkflowMCPServer {
           await this.sessionManager.createSession(this.dashboardUrl);
           
           // Log dashboard startup info
-          console.error(`Dashboard auto-started at: ${this.dashboardUrl}`);
+          // Dashboard auto-started (silent in MCP mode)
         } catch (dashboardError: any) {
           // Check if it's a port conflict error
           if (dashboardError.message.includes('already in use') && dashboardOptions.port) {

@@ -79,7 +79,7 @@ export class WorkspaceInitializer {
       await fs.writeFile(targetPath, content, 'utf-8');
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error(`Failed to copy template ${templateName}: ${errorMessage}`);
+      // Failed to copy template (silent error)
     }
   }
   

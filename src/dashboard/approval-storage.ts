@@ -186,8 +186,8 @@ export class ApprovalStorage extends EventEmitter {
     try {
       await this.captureSnapshot(id, 'initial');
     } catch (error) {
-      // Log error but don't fail the approval creation
-      console.warn(`Failed to capture initial snapshot for approval ${id}:`, error);
+      // Silently ignore snapshot errors to avoid polluting MCP responses
+      // Error is logged internally but not to console
     }
 
     return id;
@@ -245,13 +245,13 @@ export class ApprovalStorage extends EventEmitter {
       try {
         await this.captureSnapshot(id, 'revision_requested');
       } catch (error) {
-        console.warn(`Failed to capture revision snapshot for approval ${id}:`, error);
+        // Silently ignore snapshot errors
       }
     } else if (status === 'approved') {
       try {
         await this.captureSnapshot(id, 'approved');
       } catch (error) {
-        console.warn(`Failed to capture approval snapshot for approval ${id}:`, error);
+        // Silently ignore snapshot errors
       }
     }
 
@@ -465,7 +465,7 @@ export class ApprovalStorage extends EventEmitter {
     if (trigger === 'initial') {
       const existingInitial = metadata.snapshots.find(s => s.trigger === 'initial');
       if (existingInitial) {
-        console.log(`Initial snapshot already exists for ${approval.filePath}, skipping creation`);
+        // Initial snapshot already exists, skip creation silently
         return;
       }
     }

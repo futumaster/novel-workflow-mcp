@@ -58,7 +58,7 @@ export class DashboardServer {
         this.actualPort = this.options.port;
         this.isUsingExistingDashboard = true;
         const existingUrl = `http://localhost:${this.actualPort}`;
-        console.error(`Dashboard already running at ${existingUrl} - connecting to existing instance`);
+        // Dashboard already running (silent in MCP mode)
 
         // Return early BEFORE starting any watchers or registering routes
         // This prevents resource leaks when connecting to existing dashboards
@@ -80,7 +80,7 @@ export class DashboardServer {
         .then(response => response.ok ? response.json() : null)
         .then((packageInfo: any) => {
           if (packageInfo?.version && packageInfo.version !== this.packageVersion) {
-            console.error(`Note: NPM has newer version ${packageInfo.version}, local is ${this.packageVersion}`);
+            // NPM has newer version available (silent check)
           }
         })
         .catch(() => {

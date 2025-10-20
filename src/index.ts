@@ -199,8 +199,7 @@ function parseArguments(args: string[]): {
   
   // Warn if no explicit path was provided and we're using cwd
   if (!filteredArgs[0] && !isDashboardMode) {
-    console.warn(`Warning: No project path specified, using current directory: ${projectPath}`);
-    console.warn('Consider specifying an explicit path for better clarity.');
+    // Using current directory as project path (silent warning)
   }
   
   return { projectPath, isDashboardMode, autoStartDashboard, port: customPort, lang: undefined, configPath };
@@ -230,10 +229,9 @@ async function main() {
         process.exit(1);
       }
       // For default config location, just warn and continue
-      console.error(`Config file error: ${configResult.error}`);
-      console.error('Continuing with command-line arguments only...');
+      // Config file error, continuing with command-line arguments only
     } else if (configResult.config && configResult.configPath) {
-      console.error(`Loaded config from: ${configResult.configPath}`);
+      // Config loaded successfully
     }
     
     // Convert CLI args to config format
@@ -325,8 +323,7 @@ async function main() {
       
     } else {
       // MCP server mode (with optional auto-start dashboard)
-      console.error(`Starting Spec Workflow MCP Server for project: ${projectPath}`);
-      console.error(`Working directory: ${process.cwd()}`);
+      // Starting MCP Server (silent mode)
       
       const server = new SpecWorkflowMCPServer();
       
@@ -343,7 +340,7 @@ async function main() {
       
       // Inform user about MCP server lifecycle
       if (autoStartDashboard) {
-        console.error('\nMCP server is running. The server and dashboard will shut down when the MCP client disconnects.');
+        // MCP server running
       }
       
       // Handle graceful shutdown
