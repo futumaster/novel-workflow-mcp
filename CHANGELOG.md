@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2025-10-19
+
+### Fixed
+- 🐛 修复仪表板版本号显示问题
+  - 优先从本地 package.json 读取版本号（立即显示）
+  - 更新 npm 包名引用从 @pimzino 改为 @ttaqt
+  - 后台异步检查 npm 版本，不阻塞启动
+  - 现在版本号会立即正确显示
+
+## [1.0.2] - 2025-10-19
+
+### Added
+- 📝 完整重写 README.md 为专业项目文档
+- 📝 添加详细的 CHANGELOG.md
+- 📝 添加贡献指南 CONTRIBUTING.md
+
+### Changed
+- 📚 项目文档专业化升级
+
 ## [1.0.1] - 2025-10-19
 
 ### Fixed
