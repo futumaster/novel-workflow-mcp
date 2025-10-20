@@ -210,8 +210,9 @@ export class DashboardServer {
         if (p.startsWith('/') || p.match(/^[A-Za-z]:[\\\/]/)) {
           candidates.push(p);
         }
-        // 3) If not already under .spec-workflow, try under that root
-        if (!p.includes('.spec-workflow')) {
+        // 3) Try under .novel-workflow or .spec-workflow (legacy) root
+        if (!p.includes('.novel-workflow') && !p.includes('.spec-workflow')) {
+          candidates.push(join(this.approvalStorage.projectPath, '.novel-workflow', p));
           candidates.push(join(this.approvalStorage.projectPath, '.spec-workflow', p));
         }
 

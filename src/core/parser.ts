@@ -81,6 +81,12 @@ export class SpecParser {
     try {
       const stats = await stat(steeringPath);
       
+      // Check for new novel-workflow steering documents
+      const storyConceptExists = await this.fileExists(join(steeringPath, 'story-concept.md'));
+      const worldBuildingExists = await this.fileExists(join(steeringPath, 'world-building.md'));
+      const characterProfilesExists = await this.fileExists(join(steeringPath, 'character-profiles.md'));
+      
+      // Also check legacy names for backward compatibility
       const productExists = await this.fileExists(join(steeringPath, 'product.md'));
       const techExists = await this.fileExists(join(steeringPath, 'tech.md'));
       const structureExists = await this.fileExists(join(steeringPath, 'structure.md'));
@@ -88,9 +94,9 @@ export class SpecParser {
       return {
         exists: stats.isDirectory(),
         documents: {
-          product: productExists,
-          tech: techExists,
-          structure: structureExists
+          product: storyConceptExists || productExists,
+          tech: worldBuildingExists || techExists,
+          structure: characterProfilesExists || structureExists
         },
         lastModified: stats.mtime.toISOString()
       };
