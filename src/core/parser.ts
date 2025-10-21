@@ -39,19 +39,20 @@ export class SpecParser {
         return null;
       }
       
-      // Read all phase files
-      const requirements = await this.getPhaseStatus(specPath, 'requirements.md');
-      const design = await this.getPhaseStatus(specPath, 'design.md');
-      const tasks = await this.getPhaseStatus(specPath, 'tasks.md');
+      // Read all phase files (using story document names)
+      // Map old names to new names for novel-workflow
+      const requirements = await this.getPhaseStatus(specPath, 'outline-brief.md');
+      const design = await this.getPhaseStatus(specPath, 'outline-detailed.md');
+      const tasks = await this.getPhaseStatus(specPath, 'scenes.md');
       
-      // Parse task progress using unified parser
+      // Parse scene progress using unified parser
       let taskProgress = undefined;
       if (tasks.exists) {
         try {
-          const tasksContent = await readFile(join(specPath, 'tasks.md'), 'utf-8');
-          taskProgress = parseTaskProgress(tasksContent);
+          const scenesContent = await readFile(join(specPath, 'scenes.md'), 'utf-8');
+          taskProgress = parseTaskProgress(scenesContent);
         } catch {
-          // Error reading tasks file
+          // Error reading scenes file
         }
       }
       
