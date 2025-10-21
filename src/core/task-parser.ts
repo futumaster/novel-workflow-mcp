@@ -180,8 +180,11 @@ export function parseTasksFromMarkdown(content: string): TaskParserResult {
     }
     
     // Extract task ID and description
+    // Remove markdown formatting (**, *, etc.) before matching
+    const cleanedTaskText = taskText.replace(/\*\*/g, '').replace(/\*/g, '').trim();
+    
     // Match patterns like "1. Description", "1.1 Description", "2.1. Description" etc
-    const taskMatch = taskText.match(/^(\d+(?:\.\d+)*)\s*\.?\s+(.+)/);
+    const taskMatch = cleanedTaskText.match(/^(\d+(?:\.\d+)*)\s*\.?\s+(.+)/);
     
     let taskId: string;
     let description: string;
@@ -190,8 +193,15 @@ export function parseTasksFromMarkdown(content: string): TaskParserResult {
       taskId = taskMatch[1];
       description = taskMatch[2];
     } else {
-      // No task number found, skip this task
-      continue;
+      // Try matching the original taskText in case it has ID without bold
+      const fallbackMatch = taskText.match(/^(\d+(?:\.\d+)*)\s*\.?\s+(.+)/);
+      if (fallbackMatch) {
+        taskId = fallbackMatch[1];
+        description = fallbackMatch[2];
+      } else {
+        // No task number found, skip this task
+        continue;
+      }
     }
     
     // Parse metadata from content between this task and the next

@@ -52,18 +52,24 @@ ${context.dashboardUrl ? `- Dashboard: ${context.dashboardUrl}` : ''}
    - Change the scene marker from [ ] to [-] for the scene you're starting
    - Only one scene should be in-progress at a time
 
-3. **Read Scene Guidance:**
-   - Look for the _Prompt field in the scene - it contains structured writing guidance:
-     - Role: The writer's approach to assume (e.g., "Novelist skilled in action scenes")
-     - Task: Clear description of what to write with context references
-     - Restrictions: What to avoid and constraints (word count, POV, tone, etc.)
-     - Success: Specific quality criteria for the scene
-   - Note the _OutlineBrief fields for which part of the brief outline this implements
-   - Check _OutlineDetailed fields for which part of the detailed outline this connects to
+3. **Read Scene Guidance and Context:**
+   - **CRITICAL**: The _Prompt field is GUIDANCE FOR YOU, not content to include in the story
+   - Read the _Prompt field to understand writing requirements
+   - Read .novel-workflow/steering/character-profiles.md for character details
+   - Read .novel-workflow/steering/world-building.md for setting rules
+   - Read .novel-workflow/stories/${storyName}/outline-detailed.md for plot context
    - Understand scene type (Active vs Reactive) and the three elements required
 
-4. **Write the Scene:**
-   - Follow the _Prompt guidance exactly
+4. **Write the Scene (IMPORTANT - Novel Prose Only):**
+   - **WRITE PURE NOVEL PROSE** - No labels, no markers, no structural annotations
+   - **DO NOT include** any of these in the actual scene text:
+     ❌ "Character: xxx"
+     ❌ "Task: xxx"  
+     ❌ "Dialogue: xxx"
+     ❌ "Emotion: xxx"
+     ❌ Any "_Prompt" format markers
+   - **ONLY WRITE**: Pure narrative prose, dialogue, and description
+   - Follow the _Prompt guidance internally (as writing principles)
    - For Active scenes, include: Goal (what character wants) / Conflict (obstacles) / Disaster (setback)
    - For Reactive scenes, include: Reaction (emotional response) / Dilemma (weighing options) / Decision (choosing next action)
    - Match the character voice and personality from character-profiles.md
@@ -91,10 +97,20 @@ ${context.dashboardUrl ? `- Dashboard: ${context.dashboardUrl}` : ''}
    - Change the scene marker from [-] to [x] for the completed scene
    - Only mark complete when the scene is fully written and polished
 
+**CRITICAL - Avoid Common Mistakes:**
+❌ **DO NOT write structural labels in the scene** (e.g., "Character:", "Task:", "Dialogue:")
+❌ **DO NOT include _Prompt format** in the actual prose
+❌ **DO NOT write meta-instructions** in the scene text
+✅ **WRITE PURE NOVEL PROSE** - Just the story, like a real published novel
+
 **Important Guidelines:**
 - Always mark a scene as in-progress before starting to write
-- Follow the _Prompt field guidance for role, approach, and success criteria
-- Stay true to character voices and personalities from character-profiles.md
+- The _Prompt field is GUIDANCE, not content - internalize it, don't copy it
+- Before writing, READ these for context:
+  1. character-profiles.md - for character voices and habits
+  2. world-building.md - for setting and rules
+  3. outline-detailed.md - for plot context
+- Stay true to character voices and personalities
 - Respect the world-building rules and constraints
 - Each scene should have vivid sensory details and strong imagery
 - Balance action, dialogue, and internal thoughts
