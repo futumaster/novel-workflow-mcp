@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2025-10-20
+
+### Fixed - 关键问题修复 🐛
+- 🔥 **修复1：MCP workflow未贯穿全流程**
+  - 增强write-scene提示词，强制要求读取上下文文档
+  - 确保AI在写正文前读取character-profiles.md、world-building.md、outline-detailed.md
+  - 保持MCP的结构化指导贯穿整个创作流程，不会变成纯AI生成
+
+- 🔥 **修复2：小说正文包含格式标签**
+  - 明确_Prompt字段是指导信息，不是正文内容
+  - 添加WARNING：禁止将"Character: xxx"等标签写入正文
+  - 在scenes模板中明确说明_Prompt用途
+  - 确保生成纯粹的小说散文，就像出版的小说
+
+- 🔥 **修复3：仪表板场景数据不显示**
+  - 修复task-parser无法解析带markdown格式(**粗体**)的场景ID
+  - 在ID提取前清理markdown格式符号
+  - 现在支持：`- [ ] **1.1 场景**`、`- [ ] *1.1* 场景`等格式
+  - 仪表板正确显示场景进度
+
+### Impact
+- ✅ 创作流程更连贯（MCP始终在指导）
+- ✅ 小说正文更专业（纯散文，无标签）
+- ✅ 仪表板准确追踪（场景进度可见）
+
 ## [2.1.0] - 2025-10-20
 
 ### Added - 全面质量升级 🎯
