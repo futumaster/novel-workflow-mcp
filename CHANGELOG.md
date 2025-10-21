@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2025-10-20
+
+### Fixed - 严重Bug修复 🔥
+- 🔥 **修复parser读取错误的文件名** - 这是导致仪表板场景显示0的根本原因
+  - parser.ts查找 `tasks.md` 改为 `scenes.md`
+  - parser.ts查找 `requirements.md` 改为 `outline-brief.md`
+  - parser.ts查找 `design.md` 改为 `outline-detailed.md`
+  - **影响**: 仪表板现在可以正确显示场景数据和进度了！
+
+### Test Results
+```
+修复前: Scenes显示 0/0 ❌
+修复后: Scenes显示 8/13 (62%) ✅
+```
+
 ## [2.2.0] - 2025-10-20
 
 ### Fixed - 关键问题修复 🐛
